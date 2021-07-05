@@ -1,38 +1,50 @@
-from datetime import datetime, timedelta
+import logging
+from fastapi import FastAPI, HTTPException
+from config import settings
+from models import Movie, MovieIDRequest
+from url_signer import get_signed_url
 
-from cryptography.hazmat.backends import default_backend
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives import serialization
-from cryptography.hazmat.primitives.asymmetric import padding
-from botocore.signers import CloudFrontSigner
+app = FastAPI()
 
-# pip install cryptography
-# https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/private-content-creating-signed-url-canned-policy.html
-# https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cloudfront.html#examples
+logger = logging.getLogger(__name__)
+logger.setLevel(settings.log_level)
+
+CREATED = 201
+NOT_FOUND = 404
+INTERNAL_ERROR = 500
 
 
-def rsa_signer(message):
-    with open('../cloudfront-keys/private_key.pem', 'rb') as key_file:
-        private_key = serialization.load_pem_private_key(
-            key_file.read(),
-            password=None,
-            backend=default_backend()
+@app.on_event("startup")
+def init():
+    pass
+
+
+@app.on_event("shutdown")
+def shutdown():
+    pass
+
+
+def get_movie_by_id(movie_id):
+    return {
+        'id': '93a9fe05-a816-422d-97e0-6e8f718b0027',
+        'name': 'Rainbow',
+        'is_premium': True,
+        'file_name': 'girl-showing-rainbow.mp4'
+    }
+
+
+@app.post("/api/v1/movie_private_link", status_code=CREATED)
+def create_private_link(movie_id_request: MovieIDRequest):
+    try:
+        movie = get_movie_by_id(movie_id_request.id)
+        movie = Movie(**movie)
+        url = get_signed_url(movie.file_name)
+
+    except Exception as err:
+        logger.error("ERROR: " + str(err))
+        raise HTTPException(
+            INTERNAL_ERROR,
+            detail="500: Internal server error. Please try later.",
         )
-    return private_key.sign(message, padding.PKCS1v15(), hashes.SHA1())
 
-
-key_id = 'K1V7VQCAGHUSXP'
-base_url = 'https://d28ajo2rmubsoy.cloudfront.net'
-path_prefix = 'assets'
-movie_file_name = 'girl-showing-rainbow.mp4'
-url = base_url + '/' + path_prefix + '/' + movie_file_name
-expire_date = datetime.now() + timedelta(hours=8)
-
-cloudfront_signer = CloudFrontSigner(key_id, rsa_signer)
-
-# Create a signed url that will be valid until the specific expiry date
-# provided using a canned policy.
-signed_url = cloudfront_signer.generate_presigned_url(
-    url, date_less_than=expire_date)
-print(signed_url)
-
+    return {"url": url}
