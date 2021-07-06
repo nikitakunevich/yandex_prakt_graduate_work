@@ -53,7 +53,7 @@ terraform apply
 python main.py --bucket movies-189895028386 --filename ../sample-data/girl-showing-rainbow.mp4 --folder assets01
 ```
 
-## 6 - Edit `movies-on-deman-api` configuration
+## 6 - Edit `movies-on-demand-api` configuration
 images/movies-on-demand/src/config.py:
 ```python
 cf_key_id = "K33LU8UGJYKH9R"
@@ -61,7 +61,7 @@ cf_domain_name = "d3cyckes3v9dct.cloudfront.net"
 ```
 You can find proper values in the output of `terraform apply` in step 4.2.
 
-## 7 - Run `movies-on-deman-api`
+## 7 - Run `movies-on-demand-api`
 ```bash
 uvicorn main:app
 ```
