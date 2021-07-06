@@ -12,7 +12,7 @@ from botocore.signers import CloudFrontSigner
 
 
 def rsa_signer(message):
-    with open('../images/movies-on-demand-api-dev/cloudfront-keys/private_key.pem', 'rb') as key_file:
+    with open('../images/movies-on-demand-api/cloudfront-keys/private_key.pem', 'rb') as key_file:
         private_key = serialization.load_pem_private_key(
             key_file.read(),
             password=None,
