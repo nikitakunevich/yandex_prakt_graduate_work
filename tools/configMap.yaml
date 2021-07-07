@@ -5,7 +5,7 @@ metadata:
   namespace: kube-system
 data:
   mapRoles: |
-    - rolearn: arn:aws:iam::423321982572:role/terraform-eks-movies-node
+    - rolearn: arn:aws:iam::493674448688:role/terraform-eks-movies-node
       username: system:node:{{EC2PrivateDNSName}}
       groups:
         - system:bootstrappers

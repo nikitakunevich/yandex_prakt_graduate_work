@@ -4,7 +4,7 @@ resource "aws_vpc" "vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = map(
-    "Name", "terraform-eks-demo-node",
+    "Name", "movies-vpc",
     "kubernetes.io/cluster/${var.cluster-name}", "shared",
   )
 }
@@ -17,7 +17,7 @@ resource "aws_subnet" "eks" {
   vpc_id            = aws_vpc.vpc.id
 
   tags = map(
-    "Name", "terraform-eks-demo-node",
+    "Name", "eks-movies-subnet",
     "kubernetes.io/cluster/${var.cluster-name}", "shared",
   )
 }

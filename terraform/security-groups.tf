@@ -22,7 +22,7 @@ resource "aws_security_group" "movies-cluster" {
 # OPTIONAL: Allow inbound traffic from your local workstation external IP
 #           to the Kubernetes. You will need to replace A.B.C.D below with
 #           your real IP. Services like icanhazip.com can help you find this.
-resource "aws_security_group_rule" "demo-cluster-ingress-workstation-https" {
+resource "aws_security_group_rule" "movies-cluster-ingress-workstation-https" {
   cidr_blocks       = ["92.46.0.84/32"]
   description       = "Allow workstations to communicate with the cluster API Server"
   from_port         = 443
@@ -47,7 +47,7 @@ resource "aws_security_group_rule" "movies-cluster-ingress-self" {
 ################################################
 
 resource "aws_security_group" "movies-node" {
-  name        = "terraform-eks-demo-node"
+  name        = "terraform-eks-movies-node"
   description = "Security group for all nodes in the cluster"
   vpc_id      = aws_vpc.vpc.id
 
@@ -59,7 +59,7 @@ resource "aws_security_group" "movies-node" {
   }
 
   tags = map(
-    "Name", "terraform-eks-demo-node",
+    "Name", "terraform-eks-movies-node",
     "kubernetes.io/cluster/${var.cluster-name}", "owned",
   )
 }
