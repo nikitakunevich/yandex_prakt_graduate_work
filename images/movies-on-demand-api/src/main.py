@@ -16,12 +16,16 @@ INTERNAL_ERROR = 500
 
 @app.on_event("startup")
 def init():
-    pass
+    logger.info('Starting application.\n')
+    for param in settings.__dict__:
+        if settings.__dict__[param] is None:
+            raise Exception(f'Configuration parameter {param} is not set.')
+        logger.info(f'{param} = {settings.__dict__[param]}')
 
 
 @app.on_event("shutdown")
 def shutdown():
-    pass
+    logger.info('Shutting down.\n')
 
 
 def get_movie_by_id(movie_id):

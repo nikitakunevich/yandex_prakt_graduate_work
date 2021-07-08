@@ -10,7 +10,7 @@ terraform {
 }
 
 variable "aws_account_id" {
-  type        = number
+  type        = string
   description = "ID of the AWS account in a number format. Example: 093310752320"
 }
 
@@ -18,7 +18,7 @@ resource "aws_s3_bucket" "tfstate" {
   bucket = "tfstate-${var.aws_account_id}"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 
   versioning {
