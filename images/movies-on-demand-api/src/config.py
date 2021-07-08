@@ -1,7 +1,9 @@
+"""Модуль содержит настройки."""
 from pydantic import BaseSettings
 
 
 class Settings(BaseSettings):
+    """Общий класс настроек."""
     log_level: str
     cf_key_id: str
     cf_domain_name: str
