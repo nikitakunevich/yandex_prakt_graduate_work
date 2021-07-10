@@ -52,3 +52,8 @@ def create_private_link(movie_id_request: MovieIDRequest):
         )
 
     return {"url": url}
+
+
+@app.get("/health-check")
+def health_check():
+    return {"status": "healthy"}

@@ -93,3 +93,49 @@ resource "aws_security_group_rule" "movies-cluster-ingress-from-nodes" {
   to_port                  = 0
   type                     = "ingress"
 }
+
+resource "aws_security_group_rule" "movies-node-ingress-from-alb" {
+  description              = "Allow worker Kubelets and pods to receive communication from ALBs"
+  from_port                = 0
+  protocol                 = "-1"
+  security_group_id        = aws_security_group.movies-node.id
+  source_security_group_id = aws_security_group.ingress-alb.id
+  to_port                  = 0
+  type                     = "ingress"
+}
+
+##########################
+# SG for ingress         #
+##########################
+
+resource "aws_security_group" "ingress-alb" {
+  name        = "ingress-alb"
+  description = "Security group for ingress ALBs"
+  vpc_id      = aws_vpc.vpc.id
+
+  ingress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+/*
+resource "aws_security_group_rule" "ingress-alb-to-k8s-node-port" {
+  description              = "Allow node to communicate with each other"
+  from_port                = 30000
+  to_port                  = 32767
+  protocol                 = "-1"
+  security_group_id        = aws_security_group.ingress-alb.id
+  source_security_group_id = aws_security_group.movies-node.id
+  type                     = "egress"
+}
+*/

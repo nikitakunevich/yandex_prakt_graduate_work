@@ -1,0 +1,16 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: movies-on-demand-api
+  labels:
+    app: movies-on-demand-api
+  annotations:
+    prometheus.io/scrape: "true"
+spec:
+  type: NodePort
+  selector:
+    app: movies-on-demand-api
+  ports:
+    - name: http
+      port: 80
+      targetPort: http

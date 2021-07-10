@@ -9,7 +9,7 @@ export AWS_ACCESS_KEY_ID=<key_id>
 export AWS_SECRET_ACCESS_KEY=<secret_key>
 export AWS_DEFAULT_REGION=us-east-1
 
-python main.py --bucket movies-189895028386 --filename ../sample-data/girl-showing-rainbow.mp4 --folder assets01
+python main.py --bucket movies-189895028386 --filename ../sample-data/girl-showing-rainbow.mp4 --folder assets
 '''
 
 

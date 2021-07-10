@@ -19,6 +19,7 @@ resource "aws_subnet" "eks" {
   tags = map(
     "Name", "eks-movies-subnet",
     "kubernetes.io/cluster/${var.cluster-name}", "shared",
+    "kubernetes.io/role/elb", 1
   )
 }
 

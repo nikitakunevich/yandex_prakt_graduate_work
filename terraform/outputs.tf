@@ -11,28 +11,9 @@ output "cloudfront-key-id" {
 }
 
 ############################################
-# configmap for workers to join the master #
+# SG for allowing HTTPS                    #
 ############################################
 
-locals {
-  config_map_aws_auth = <<CONFIGMAPAWSAUTH
-
-
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: aws-auth
-  namespace: kube-system
-data:
-  mapRoles: |
-    - rolearn: ${aws_iam_role.movies-node.arn}
-      username: system:node:{{EC2PrivateDNSName}}
-      groups:
-        - system:bootstrappers
-        - system:nodes
-CONFIGMAPAWSAUTH
-}
-
-output "config_map_aws_auth" {
-  value = local.config_map_aws_auth
+output "allow-all-ingress-tcp-alb-sg" {
+  value = aws_security_group.ingress-alb.id
 }
