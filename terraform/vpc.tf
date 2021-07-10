@@ -23,6 +23,18 @@ resource "aws_subnet" "eks" {
   )
 }
 
+resource "aws_subnet" "private" {
+  count = 2
+
+  availability_zone = data.aws_availability_zones.available.names[count.index]
+  cidr_block        = "10.0.${count.index + 100}.0/24"
+  vpc_id            = aws_vpc.vpc.id
+
+  tags = map(
+    "Name", "private-subnet"
+  )
+}
+
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.vpc.id
 

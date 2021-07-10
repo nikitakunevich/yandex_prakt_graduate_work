@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: movies-on-demand-api
-          image: 772561320311.dkr.ecr.us-east-1.amazonaws.com/movies-on-demand-api:latest
+          image: 791903720429.dkr.ecr.us-east-1.amazonaws.com/movies-on-demand-api:latest
           ports:
             - name: http
               containerPort: 8000

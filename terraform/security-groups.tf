@@ -128,14 +128,26 @@ resource "aws_security_group" "ingress-alb" {
   }
 }
 
-/*
-resource "aws_security_group_rule" "ingress-alb-to-k8s-node-port" {
-  description              = "Allow node to communicate with each other"
-  from_port                = 30000
-  to_port                  = 32767
-  protocol                 = "-1"
-  security_group_id        = aws_security_group.ingress-alb.id
-  source_security_group_id = aws_security_group.movies-node.id
-  type                     = "egress"
+############################
+# SG for bastion           #
+############################
+
+resource "aws_security_group" "bastion" {
+  name        = "bastion-sg"
+  description = "Security group for Bastion"
+  vpc_id      = aws_vpc.vpc.id
+
+  ingress {
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
-*/

@@ -13,7 +13,9 @@ RUN groupadd -g $GID $GROUP && \
     useradd -u $UID -g $GID -m $USER && \
     mkdir $ROOT_APP
 
-COPY cloudfront-keys/private_key.pem $ROOT_APP/
+RUN apt update && apt upgrade -y && \
+    apt install redis-tools -y
+
 COPY Pipfile Pipfile.lock $ROOT_APP/
 
 WORKDIR $ROOT_APP
@@ -23,8 +25,13 @@ RUN python -m pip install --upgrade pip && \
     pipenv install --system --ignore-pipfile
 
 COPY src/ $ROOT_APP/
+ENV FLASK_APP   main.py
+
+COPY src/wait_redis.sh $ROOT_APP/
+RUN chmod +x wait_redis.sh
 
 RUN chown -R $USER:$GROUP $ROOT_APP
 
 USER $USER
-ENTRYPOINT ["uvicorn", "main:app", "--port", "8000", "--host", "0.0.0.0"]
+
+CMD ["./wait_redis.sh", "python", "main.py"]
