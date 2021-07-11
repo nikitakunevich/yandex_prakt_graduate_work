@@ -1,5 +1,7 @@
 import logging
+
 from fastapi import FastAPI, HTTPException
+
 from config import settings
 from models import Movie, MovieIDRequest
 from url_signer import get_signed_url
@@ -28,28 +30,30 @@ def shutdown():
     logger.info('Shutting down.\n')
 
 
-def get_movie_by_id(movie_id):
+def get_movie_by_id(_) -> dict:
+    """Возвращает информацию о фильме по id."""
     return {
-        'id': '93a9fe05-a816-422d-97e0-6e8f718b0027',
-        'name': 'Rainbow',
-        'is_premium': True,
-        'file_name': 'girl-showing-rainbow.mp4'
+        "id": "93a9fe05-a816-422d-97e0-6e8f718b0027",
+        "name": "Rainbow",
+        "is_premium": True,
+        "file_name": "girl-showing-rainbow.mp4",
     }
 
 
 @app.post("/api/v1/movie_private_link", status_code=CREATED)
-def create_private_link(movie_id_request: MovieIDRequest):
+def create_private_link(movie_id_request: MovieIDRequest) -> dict:
+    """Создает ссылку для доступа к фильму."""
     try:
         movie = get_movie_by_id(movie_id_request.id)
         movie = Movie(**movie)
         url = get_signed_url(movie.file_name)
 
-    except Exception as err:
-        logger.error("ERROR: " + str(err))
+    except Exception as exc:
+        logger.exception(exc)
         raise HTTPException(
             INTERNAL_ERROR,
             detail="500: Internal server error. Please try later.",
-        )
+        ) from exc
 
     return {"url": url}
 
