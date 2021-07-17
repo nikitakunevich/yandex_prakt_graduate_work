@@ -1,7 +1,7 @@
 # Initializing infrastructure in a new clean AWS account
 
 1. cd `root_dir_of_the_repo`
-2. Add environment variables to the file `.envrc.private` (the values are just example):
+2. Add environment variables to the file `.envrc.private` (the values are just an example):
 ```bash
 export TF_VAR_aws_account_id=241284480095
 export AWS_ACCOUNT_ID=241284480095
