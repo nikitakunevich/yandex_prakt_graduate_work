@@ -10,6 +10,6 @@ export AWS_SECRET_ACCESS_KEY=rf2ro0M1N1jK2fERRQKahFMrt6SoatDYS0Q2WGug
 ```
 3. Run `DO_ALL.SH`:
 ```bash
-./init-infra.sh
+./DO_ALL.SH
 ```
 4. Grab a cup of coffee and relax for 40-50 minutes :)
