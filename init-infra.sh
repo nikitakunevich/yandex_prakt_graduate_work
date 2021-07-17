@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eux # fail on error, fail on unset var, show command substitutions
+set -eux
 
 # Clean terraform providers from the previous infra
 find . -name .terraform -type d -exec rm -rf {} \; || true
@@ -41,5 +41,12 @@ terraform apply -auto-approve
 cd ../init-infra
 ./finish-eks-creation.sh
 
+echo ""
+echo ""
+echo "######################################################"
+echo "IMPORTANT infrastructure components names and outputs!"
+echo "######################################################"
+echo ""
+
 cd ../terraform
-terraform output
+terraform output | tee OUTPUT.TXT

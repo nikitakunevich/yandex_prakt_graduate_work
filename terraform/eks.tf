@@ -77,6 +77,6 @@ resource "aws_autoscaling_group" "movies-nodes" {
   }
 }
 
-output "allow-all-ingress-tcp-alb-sg" {
-  value = aws_security_group.ingress-alb.id
+output "cluster-id" {
+  value = aws_eks_cluster.movies.id
 }

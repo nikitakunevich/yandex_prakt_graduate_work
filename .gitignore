@@ -91,3 +91,7 @@ dmypy.json
 .terraform
 terraform.tfstate
 terraform.tfstate.backup
+OUTPUT.TXT
+
+# Direnv
+.envrc.private

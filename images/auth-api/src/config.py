@@ -11,10 +11,10 @@ jwt_refresh_token_expires_days = int(os.environ.get('JWT_REFRESH_TOKEN_EXPIRES_D
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'idV9z8SuRFrT04e71IeCgXuttG6kXfB7'
+    SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    REDIS_HOST = os.environ.get('REDIS_HOST') or 'localhost'
-    REDIS_PORT = int(os.environ.get('REDIS_PORT')) if os.environ.get('REDIS_PORT') else 6379
+    REDIS_HOST = os.environ.get('REDIS_HOST')
+    REDIS_PORT = int(os.environ.get('REDIS_PORT'))
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=jwt_access_token_expires_minutes)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=jwt_refresh_token_expires_days)
     GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID', None)

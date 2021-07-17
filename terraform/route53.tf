@@ -20,10 +20,6 @@ resource "aws_route53_zone" "private" {
   }
 }
 
-output "nameservers" {
-  value = aws_route53_zone.private.name_servers
-}
-
 resource "aws_route53_record" "postgres" {
   zone_id = aws_route53_zone.private.zone_id
   name    = "postgres.${aws_route53_zone.private.name}"

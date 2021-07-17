@@ -6,3 +6,7 @@ resource "aws_acm_certificate" "movies" {
     create_before_destroy = true
   }
 }
+
+output "acm-certificate-arn" {
+  value = aws_acm_certificate.movies.arn
+}

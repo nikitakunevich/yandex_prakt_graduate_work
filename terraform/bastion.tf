@@ -20,6 +20,7 @@ resource "aws_instance" "bastion" {
   associate_public_ip_address = true
   subnet_id                   = aws_subnet.eks[0].id
   vpc_security_group_ids      = [aws_security_group.bastion.id]
+  key_name                    = aws_key_pair.bastion.id
 
   tags = {
     Name = "Bastion"

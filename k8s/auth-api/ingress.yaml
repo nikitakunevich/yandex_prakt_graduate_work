@@ -1,0 +1,19 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: auth-api
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/security-groups: sg-04cad8b38d5bd6d81
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:591864715973:certificate/417d48e3-0ec4-48a2-ba20-6748f508191b
+    alb.ingress.kubernetes.io/healthcheck-interval-seconds: "60"
+    alb.ingress.kubernetes.io/healthcheck-path: /health-check
+spec:
+  rules:
+    - host: auth-api.movies.hi-tech4.cloud
+      http:
+        paths:
+          - backend:
+              serviceName: auth-api
+              servicePort: http

@@ -151,3 +151,7 @@ resource "aws_security_group" "bastion" {
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
+
+output "allow-all-ingress-tcp-alb-sg" {
+  value = aws_security_group.ingress-alb.id
+}

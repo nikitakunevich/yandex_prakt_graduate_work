@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-api
+  labels:
+    app: auth-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-api
+  template:
+    metadata:
+      labels:
+        app: auth-api
+    spec:
+      containers:
+        - name: auth-api
+          image: 591864715973.dkr.ecr.us-east-1.amazonaws.com/auth-api:latest
+          ports:
+            - name: http
+              containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /health-check
+              port: http
+            initialDelaySeconds: 10
+            failureThreshold: 5
+            periodSeconds: 60
+          readinessProbe:
+            httpGet:
+              path: /health-check
+              port: http
+            initialDelaySeconds: 5
+            failureThreshold: 3
+            periodSeconds: 10
+          env:
+            - name: FLASK_CONFIG
+              value: production
+            - name: REDIS_HOST
+              value: redis-cluster-repl-group.j66lju.ng.0001.use1.cache.amazonaws.com
+            - name: REDIS_PORT
+              value: "6379"
+            - name: DATABASE_URL
+              value: postgresql://postgres:postgres@postgres.ccxq5mpluapj.us-east-1.rds.amazonaws/postgres
+            - name: JWT_ACCESS_TOKEN_EXPIRES_MINUTES
+              value: "5"
+            - name: JWT_REFRESH_TOKEN_EXPIRES_DAYS
+              value: "30"
+            - name: SECRET_KEY
+              value: idV9z8SuRFrT04e71IeCgXuttG6kXfB7
+            - name: GOOGLE_CLIENT_SECRET
+              value: nr618YYu7FRDKYKAxCIMKwNr
+            - name: GOOGLE_RECAPTCHA_SECRET_KEY
+              value: 6Lf7B8MaAAAAAL8dszNdSp82jF2K-W0hOl8JIa-_
+            - name: ROOT_PASSWORD
+              value: root123456
+            - name: ROOT_SESSION_HOURS
+              value: "2"
