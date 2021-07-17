@@ -3,4 +3,4 @@
 brew install awscli
 brew install kubernetes-cli
 brew install helm
-brew install terraform@0.13.5
+brew install terraform@0.13
