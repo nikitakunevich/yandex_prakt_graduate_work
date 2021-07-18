@@ -17,6 +17,9 @@ class Config:
     REDIS_PORT = int(os.environ.get('REDIS_PORT'))
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(minutes=jwt_access_token_expires_minutes)
     JWT_REFRESH_TOKEN_EXPIRES = timedelta(days=jwt_refresh_token_expires_days)
+    JWT_PUBLIC_KEY = open('rs256.pub', 'rb').read()
+    JWT_PRIVATE_KEY = open('rs256.pem', 'rb').read()
+    JWT_ALGORITHM = os.environ.get('JWT_ALGORITHM', 'RS256')
     GOOGLE_CLIENT_ID = os.environ.get('GOOGLE_CLIENT_ID', None)
     GOOGLE_CLIENT_SECRET = os.environ.get('GOOGLE_CLIENT_SECRET', None)
     # Google re-captcha v2

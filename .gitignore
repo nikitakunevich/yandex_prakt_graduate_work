@@ -95,3 +95,6 @@ OUTPUT.TXT
 
 # Direnv
 .envrc.private
+
+# Development env files
+development.env
