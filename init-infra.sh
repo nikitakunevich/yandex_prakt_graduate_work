@@ -49,4 +49,4 @@ echo "######################################################"
 echo ""
 
 cd ../terraform
-terraform output | tee OUTPUT.TXT
+terraform output | tee "../OUTPUT.TXT"

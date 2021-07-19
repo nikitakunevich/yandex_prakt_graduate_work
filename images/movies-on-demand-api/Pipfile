@@ -9,6 +9,7 @@ botocore = "*"
 pydantic = "*"
 uvicorn = "*"
 cryptography = "*"
+pyjwt = "*"
 
 [dev-packages]
 black = "==21.6b0"
