@@ -152,6 +152,16 @@ resource "aws_security_group" "bastion" {
   }
 }
 
+resource "aws_security_group_rule" "bastion-es-from-k8s-nodes" {
+  description              = "Allow worker Kubelets and pods to receive communication from ALBs"
+  from_port                = 9200
+  to_port                  = 9200
+  protocol                 = "tcp"
+  security_group_id        = aws_security_group.bastion.id
+  source_security_group_id = aws_security_group.movies-node.id
+  type                     = "ingress"
+}
+
 output "allow-all-ingress-tcp-alb-sg" {
   value = aws_security_group.ingress-alb.id
 }

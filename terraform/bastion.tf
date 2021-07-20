@@ -21,6 +21,7 @@ resource "aws_instance" "bastion" {
   subnet_id                   = aws_subnet.eks[0].id
   vpc_security_group_ids      = [aws_security_group.bastion.id]
   key_name                    = aws_key_pair.bastion.id
+  user_data                   = file("scripts/deploy-elasticsearch.sh")
 
   tags = {
     Name = "Bastion"
