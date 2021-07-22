@@ -125,7 +125,7 @@ resource "kubernetes_ingress" "movies-on-demand-api" {
       "kubernetes.io/ingress.class"                            = "alb"
       "alb.ingress.kubernetes.io/scheme"                       = "internet-facing"
       "alb.ingress.kubernetes.io/security-groups"              = data.terraform_remote_state.infra.outputs.allow-all-ingress-tcp-alb-sg
-      #"alb.ingress.kubernetes.io/certificate-arn"              = data.terraform_remote_state.infra.outputs.acm-certificate-arn
+      "alb.ingress.kubernetes.io/certificate-arn"              = data.terraform_remote_state.infra.outputs.acm-certificate-arn
       "alb.ingress.kubernetes.io/healthcheck-interval-seconds" = "60"
       "alb.ingress.kubernetes.io/healthcheck-path"             = "/health-check"
     }

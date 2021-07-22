@@ -44,3 +44,27 @@ resource "aws_dynamodb_table" "terraform_locks" {
     type = "S"
   }
 }
+
+resource "aws_s3_bucket_policy" "read-only" {
+  bucket = aws_s3_bucket.tfstate.id
+
+  policy = jsonencode({
+    Version: "2012-10-17",
+    Statement: [
+        {
+            Effect: "Allow",
+            Principal: {
+                "AWS": "arn:aws:iam::826593466528:user/dnsadmin"
+            },
+            Action: [
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:PutObjectAcl"
+            ],
+            Resource: [
+                "${aws_s3_bucket.tfstate.arn}/*"
+            ]
+        }
+    ]
+  })
+}

@@ -2,7 +2,7 @@
 
 set -eux
 
-cd k8s-terraform
+cd terraform/k8s
 
 # Creating dynamic terraform backend config, since terraform doesn't support using variables in the 'backend' section
 cat << EOF | tee terraform-backend.tf

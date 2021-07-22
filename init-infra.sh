@@ -11,7 +11,7 @@ cd init-infra
 terraform init
 terraform apply -auto-approve
 
-cd ../terraform
+cd ../terraform/infra
 
 # Creating dynamic terraform backend config, since terraform doesn't support using variables in the 'backend' section
 cat << EOF | tee main.tf
@@ -38,7 +38,7 @@ EOF
 terraform init
 terraform apply -auto-approve
 
-cd ../init-infra
+cd ../../init-infra
 ./finish-eks-creation.sh
 
 echo ""
@@ -48,5 +48,5 @@ echo "IMPORTANT infrastructure components names and outputs!"
 echo "######################################################"
 echo ""
 
-cd ../terraform
-terraform output | tee "../OUTPUT.TXT"
+cd ../terraform/infra
+terraform output | tee "../../OUTPUT.TXT"
