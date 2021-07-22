@@ -1,0 +1,52 @@
+version: "3.8"
+
+x-env: &x-env
+  env_file:
+    - tests.env
+
+services:
+  tests:
+    image: search_api
+    <<: *x-env
+    depends_on:
+      - elasticsearch
+      - redis
+      - search_api
+    volumes:
+      - ./:/tests
+      - "../../schemas/:/schemas"
+    working_dir: /tests
+    command: >
+      /bin/bash -c "chmod +x wait.sh &&
+      pip install -r requirements.txt > /dev/null &&
+      ./wait.sh -t 0 search_api:5000 &&
+      ./wait.sh -t 0 redis:6379 &&
+      ./wait.sh -t 0 elasticsearch:9200 &&
+      pytest -s -ra -vv src/
+      "
+
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    environment:
+      discovery.type: "single-node"
+    ports:
+      - "9200:9200"
+    logging:
+      driver: none
+
+  redis:
+    image: redis:6-alpine
+    logging:
+      driver: none
+    ports:
+      - "6379:6379"
+
+  search_api:
+    build: ../../
+    image: search_api
+    <<: *x-env
+    ports:
+      - "5000:5000"
+    depends_on:
+      - elasticsearch
+      - redis

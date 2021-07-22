@@ -4,13 +4,12 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django-model-utils = "==4.0.0"
+elasticsearch = "==7.10.1"
+loguru = "==0.5.3"
 psycopg2-binary = "==2.8.6"
-django-extensions = "==3.1.0"
-gunicorn = "==20.0.4"
-django-storages = "==1.11.1"
-boto3 = "==1.17.108"
-Django = "==3.1"
+pydantic = "==1.7.3"
+redis = "==3.5.3"
+backoff = "*"
 
 [dev-packages]
 

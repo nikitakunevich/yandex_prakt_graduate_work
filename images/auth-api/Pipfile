@@ -21,7 +21,7 @@ requests = "==2.25.1"
 urllib3 = "==1.26.4"
 Authlib = "==0.15.3"
 Flask = "==1.1.2"
-Flask-JWT-Extended = "==4.1.0"
+Flask-JWT-Extended = {version = "==4.1.0", extras = ["asymmetric_crypto"]}
 Flask-Mail = "==0.9.1"
 Flask-SQLAlchemy = "==2.4.4"
 Jinja2 = "==2.11.3"

@@ -1,0 +1,41 @@
+version: "3.8"
+
+x-env: &x-env
+  env_file:
+    - deploys/prod.env
+
+services:
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    environment:
+      discovery.type: "single-node"
+    ports:
+      - 9200:9200
+    volumes:
+      - elasticdb:/usr/share/elasticsearch/data
+    restart: always
+
+  redis:
+    image: redis:6-alpine
+    restart: always
+    volumes:
+      - redisdata:/data
+    ports:
+      - 6379:6379
+
+  search_api:
+    build: .
+    image: search_api
+    <<: *x-env
+    environment:
+      JWT_PUBLIC_KEY:
+    depends_on:
+      - elasticsearch
+      - redis
+    ports:
+      - 8888:8888
+    restart: always
+
+volumes:
+  elasticdb:
+  redisdata:
