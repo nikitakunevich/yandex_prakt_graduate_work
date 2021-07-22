@@ -18,6 +18,6 @@ data "terraform_remote_state" "infra" {
 EOF
 
 cd terraform/dns
-. .envrc.private
+. .envrc
 terraform init
 terraform apply -auto-approve
