@@ -1,0 +1,511 @@
+[
+  {
+    "uuid": "4a58cdce-481e-42e9-b58e-12a24ff87a93",
+    "name": "Musical",
+    "filmworks": [
+      {
+        "uuid": "19f1ca3c-6510-4eef-8286-c97b7bf23366",
+        "title": "Pick a Star",
+        "imdb_rating": 5.5
+      },
+      {
+        "uuid": "f68f4be2-446a-42b2-851a-96ff82ee8328",
+        "title": "My Lucky Star",
+        "imdb_rating": 6.0
+      },
+      {
+        "uuid": "7e39bf54-4d2a-407d-8578-206693f9bfbe",
+        "title": "He Found a Star",
+        "imdb_rating": 5.2
+      },
+      {
+        "uuid": "0b4edff9-e5ee-4c97-a948-49ee34c419a1",
+        "title": "Star Spangled Rhythm",
+        "imdb_rating": 6.8
+      },
+      {
+        "uuid": "cfcbd9b5-7260-4db8-b209-88b79c4e0ed9",
+        "title": "Tell It to a Star",
+        "imdb_rating": 6.1
+      },
+      {
+        "uuid": "8aef8692-96b8-4c3b-a37f-3f5ec4254456",
+        "title": "A Star Is Born",
+        "imdb_rating": 7.6
+      },
+      {
+        "uuid": "3792bf2f-d62f-4820-a711-e42f1c6b6029",
+        "title": "The Cloud-Capped Star",
+        "imdb_rating": 7.9
+      },
+      {
+        "uuid": "a7d99bd6-9a3f-4e9f-a279-3a84f12cceb4",
+        "title": "Star!",
+        "imdb_rating": 6.6
+      },
+      {
+        "uuid": "61fa4e04-e7c6-409b-82c5-f7b48edb2caa",
+        "title": "Hugo: The Movie Star",
+        "imdb_rating": 5.2
+      },
+      {
+        "uuid": "8a1e961f-4cd5-4071-ae3d-c3dd6c93a766",
+        "title": "A Star Is Falling Upwards",
+        "imdb_rating": 3.3
+      },
+      {
+        "uuid": "47c8feaa-75a2-40f0-884b-5aa0c204a640",
+        "title": "The Star Wars Holiday Special",
+        "imdb_rating": 2.1
+      },
+      {
+        "uuid": "ca30453c-2f2b-4673-9dbd-e486a1a9ba4c",
+        "title": "Star",
+        "imdb_rating": 7.8
+      },
+      {
+        "uuid": "c1c4a1e4-40eb-4599-b57c-747f66ee0c97",
+        "title": "Confessions of an Action Star",
+        "imdb_rating": 2.9
+      },
+      {
+        "uuid": "fdd8533f-6413-4a50-a0a5-0f040e1cdfae",
+        "title": "Super Star",
+        "imdb_rating": 7.2
+      },
+      {
+        "uuid": "274bd714-26fd-4859-8be8-fa8205e321b3",
+        "title": "To Be a Star",
+        "imdb_rating": 6.1
+      },
+      {
+        "uuid": "65a59da0-e1ab-4b46-8f0a-e1d8fa5f82fb",
+        "title": "The Star of Christmas",
+        "imdb_rating": 7.0
+      },
+      {
+        "uuid": "0e2104cb-343a-46f0-9368-f6c2da4d652c",
+        "title": "Texaco Star Theater: Opening Night",
+        "imdb_rating": 6.6
+      },
+      {
+        "uuid": "3a57cdf7-d8f4-4b60-9fbd-1c444b3fd62b",
+        "title": "Kidz Bop: Everyone's a Star!",
+        "imdb_rating": 6.0
+      },
+      {
+        "uuid": "897c5109-f1f2-43ee-8835-5606477d6557",
+        "title": "Confessions of an Action Star",
+        "imdb_rating": 2.4
+      },
+      {
+        "uuid": "e177f3c9-273d-44cc-9c42-38ed13200408",
+        "title": "Dance Star",
+        "imdb_rating": 6.2
+      },
+      {
+        "uuid": "7034b693-961d-4cbf-a2ab-4e81a6d20655",
+        "title": "Dancing Star",
+        "imdb_rating": 5.0
+      },
+      {
+        "uuid": "c7878d26-703a-46e8-ba6c-1d9445eb1263",
+        "title": "Cory in the House: All Star Edition",
+        "imdb_rating": 9.0
+      },
+      {
+        "uuid": "ce886371-32ee-4967-810e-1c79db1e8638",
+        "title": "Star",
+        "imdb_rating": 6.6
+      },
+      {
+        "uuid": "360f445b-574a-455b-a917-2585b7eda093",
+        "title": "Pup Star: World Tour",
+        "imdb_rating": 3.8
+      }
+    ]
+  },
+  {
+    "uuid": "51dc420e-1f82-40c5-912d-5476597f9c9d",
+    "name": "Thriller",
+    "filmworks": [
+      {
+        "uuid": "932791e6-0b72-4e62-ab89-68aaebf7d779",
+        "title": "The Star Chamber",
+        "imdb_rating": 6.3
+      },
+      {
+        "uuid": "cbe92ff2-8587-41cf-9dcc-8823831d7f23",
+        "title": "Star Crystal",
+        "imdb_rating": 3.5
+      },
+      {
+        "uuid": "7508a592-30d2-4c57-834b-a20a469ed4a5",
+        "title": "Star Trek V: The Final Frontier",
+        "imdb_rating": 5.5
+      },
+      {
+        "uuid": "90ab0f70-a953-4282-a86c-10dd98e19816",
+        "title": "Star Trek VI: The Undiscovered Country",
+        "imdb_rating": 7.2
+      },
+      {
+        "uuid": "be9673e8-1eea-445d-8238-4901a645bba6",
+        "title": "Star Time",
+        "imdb_rating": 5.8
+      },
+      {
+        "uuid": "6af0e6f5-35c7-4184-8b36-d03f1ad9e5bb",
+        "title": "Star Trek: Generations",
+        "imdb_rating": 6.6
+      },
+      {
+        "uuid": "0c0000ee-40ed-41ce-8e1b-bc824a763447",
+        "title": "Fist of the North Star",
+        "imdb_rating": 3.9
+      },
+      {
+        "uuid": "8bda30e2-700f-4d89-871e-e41a738127e9",
+        "title": "Star Witness",
+        "imdb_rating": 4.0
+      },
+      {
+        "uuid": "617c471f-0f6f-4c61-92f3-a9100459be24",
+        "title": "Star Trek: First Contact",
+        "imdb_rating": 7.6
+      },
+      {
+        "uuid": "0ac2a21d-0cfd-493d-a6e9-4e547d9ec0e1",
+        "title": "Star Trek: Insurrection",
+        "imdb_rating": 6.4
+      },
+      {
+        "uuid": "198cff85-bf8c-43ec-a824-efa17e1c9154",
+        "title": "Twenty Dollar Star",
+        "imdb_rating": 5.1
+      },
+      {
+        "uuid": "f87fe8a6-33a8-4cf5-b099-882cb8105d4a",
+        "title": "Star Trek: Nemesis",
+        "imdb_rating": 6.4
+      },
+      {
+        "uuid": "2889e748-1693-4f95-a130-715d54d7bcbc",
+        "title": "Outlaw Star",
+        "imdb_rating": 7.9
+      },
+      {
+        "uuid": "de2ed4f0-f20a-4361-89e4-f4da85d17b3d",
+        "title": "Children of the Dog Star",
+        "imdb_rating": 7.2
+      },
+      {
+        "uuid": "ceea82eb-8a4d-45a1-9056-3c7de0073289",
+        "title": "Star Hill",
+        "imdb_rating": 6.9
+      },
+      {
+        "uuid": "75c40711-9ac2-4365-8c8a-45d099e01a70",
+        "title": "Star of Jaipur",
+        "imdb_rating": 6.4
+      },
+      {
+        "uuid": "8c3408fb-b73d-451d-a8fd-60540f4f6db7",
+        "title": "Star Runners",
+        "imdb_rating": 4.3
+      },
+      {
+        "uuid": "b66125b8-1db1-4931-8615-8c66538c8a42",
+        "title": "Amateur Porn Star Killer 3: The Final Chapter",
+        "imdb_rating": 2.4
+      },
+      {
+        "uuid": "c2d21131-74bb-4460-b688-ef3126d9078f",
+        "title": "Beyond the Farthest Star",
+        "imdb_rating": 7.4
+      },
+      {
+        "uuid": "1486838f-5749-43bc-ad1f-849e627e5b7a",
+        "title": "Pop Star",
+        "imdb_rating": 6.0
+      },
+      {
+        "uuid": "382dcea3-a8a8-481e-a48e-39e4ccbfa511",
+        "title": "Star Trek Beyond",
+        "imdb_rating": 7.1
+      },
+      {
+        "uuid": "7feea706-d111-4a3f-b7bb-7b7e8886632b",
+        "title": "Star vs. the Forces of Evil",
+        "imdb_rating": 8.0
+      },
+      {
+        "uuid": "71e71422-9567-4dbe-be32-54eddb51ec5a",
+        "title": "Morning Star",
+        "imdb_rating": 2.7
+      },
+      {
+        "uuid": "6cc78481-f8e3-455e-9b45-231e52b2383f",
+        "title": "Star Leaf",
+        "imdb_rating": 3.6
+      },
+      {
+        "uuid": "a6df2d1d-7326-46c3-ac0e-ddb33ecb5f73",
+        "title": "Broken Star",
+        "imdb_rating": 4.2
+      },
+      {
+        "uuid": "5d35f176-f8a4-4e6d-b31c-ed348efc0c66",
+        "title": "Tin Star",
+        "imdb_rating": 7.3
+      },
+      {
+        "uuid": "03c9d37d-7286-4c1d-a836-29cc875f6888",
+        "title": "Stalked by a Reality Star",
+        "imdb_rating": 5.1
+      }
+    ]
+  },
+  {
+    "uuid": "66856d0e-8695-4eca-884b-defa2991b6fb",
+    "name": "Reality-TV",
+    "filmworks": [
+      {
+        "uuid": "e52230eb-39ca-48cc-8feb-b5330444777e",
+        "title": "Star Academy",
+        "imdb_rating": 3.6
+      },
+      {
+        "uuid": "155a22ba-88dc-4118-836a-11e84b439a46",
+        "title": "Nashville Star",
+        "imdb_rating": 4.0
+      },
+      {
+        "uuid": "ca9044c9-e7f6-47bc-a4eb-dd196ed83e3a",
+        "title": "Next Action Star",
+        "imdb_rating": 6.8
+      },
+      {
+        "uuid": "44d37a8a-3a11-4189-b2e4-71684fc1fd00",
+        "title": "À la recherche de la nouvelle star",
+        "imdb_rating": 2.7
+      },
+      {
+        "uuid": "79cdaef3-88d3-4517-b057-90562e876218",
+        "title": "Ich bin ein Star - Holt mich hier raus!",
+        "imdb_rating": 4.8
+      },
+      {
+        "uuid": "e494b8b4-04e4-43c2-a4f5-38d8f4c7a0ab",
+        "title": "Star académie",
+        "imdb_rating": 4.2
+      },
+      {
+        "uuid": "6f72e276-f998-4835-b831-99cfe806fe9b",
+        "title": "Nouvelle Star",
+        "imdb_rating": 3.2
+      },
+      {
+        "uuid": "159a6749-0e79-4873-8318-c02f9ecee0bb",
+        "title": "I Wanna Be a Soap Star",
+        "imdb_rating": 6.8
+      },
+      {
+        "uuid": "1945cfba-6081-462c-be1f-d8c07de7de47",
+        "title": "Star Academy",
+        "imdb_rating": 3.1
+      },
+      {
+        "uuid": "75caf53c-bb79-42d4-bdcc-4d88cfc2922a",
+        "title": "Rock Star: INXS",
+        "imdb_rating": 6.9
+      },
+      {
+        "uuid": "7d74ebee-9d85-4c68-a6e1-30136b8608c5",
+        "title": "Food Network Star",
+        "imdb_rating": 6.3
+      },
+      {
+        "uuid": "1d22806e-3c11-453f-8a02-328bbec3e28f",
+        "title": "Jenna's American Sex Star",
+        "imdb_rating": 5.6
+      },
+      {
+        "uuid": "2823f8ef-e51f-4e78-94f7-324061b773b9",
+        "title": "The One: Making a Music Star",
+        "imdb_rating": 4.0
+      },
+      {
+        "uuid": "0b81525a-4f08-4fbb-aad9-710cad5cc5e7",
+        "title": "HGTV Design Star",
+        "imdb_rating": 6.3
+      },
+      {
+        "uuid": "03aa181f-52f6-4d3b-80a2-d672625c2cd0",
+        "title": "Rock Star: Supernova",
+        "imdb_rating": 6.7
+      },
+      {
+        "uuid": "dada671f-96dd-4905-8491-e728349f948b",
+        "title": "Fashion Star",
+        "imdb_rating": 6.6
+      },
+      {
+        "uuid": "2c02db24-d294-4271-95dd-7df272803988",
+        "title": "I Know My Kid's a Star",
+        "imdb_rating": 4.0
+      },
+      {
+        "uuid": "e12760a7-3c17-4041-9b55-8740845c84b3",
+        "title": "Star Camp",
+        "imdb_rating": 6.7
+      },
+      {
+        "uuid": "d8dccb51-1152-4a27-8bd8-ffb66c4e9a9b",
+        "title": "Dr. T, Lone Star Vet",
+        "imdb_rating": 8.9
+      },
+      {
+        "uuid": "ce0b6ba7-2c7e-41d0-ab48-c7f6b9a75508",
+        "title": "The Next Star",
+        "imdb_rating": 5.0
+      },
+      {
+        "uuid": "23c46fc2-eddd-47c5-bda7-8f611e055108",
+        "title": "Project Runway: All-Star Challenge",
+        "imdb_rating": 7.4
+      },
+      {
+        "uuid": "3c6848b7-cd17-4be8-bf3c-6d02231bd0a1",
+        "title": "Project Runway: All-Star Challenge",
+        "imdb_rating": 7.2
+      },
+      {
+        "uuid": "1a2d24c6-1dff-44c5-bc34-06da4058bc6c",
+        "title": "Afghan Star",
+        "imdb_rating": 7.1
+      },
+      {
+        "uuid": "78c44bc1-29b2-4ec5-91f8-ae2ab742c38c",
+        "title": "Football's Next Star",
+        "imdb_rating": 8.3
+      },
+      {
+        "uuid": "0421a11a-7ac8-425a-8fab-b0b457c63a29",
+        "title": "The Poker Star",
+        "imdb_rating": 7.9
+      },
+      {
+        "uuid": "8f7c37c2-e252-4a06-94a9-05ee35357dfe",
+        "title": "Fashion Star",
+        "imdb_rating": 5.2
+      },
+      {
+        "uuid": "c0f49bf1-0f79-453d-9dc4-639cbc9dfdb6",
+        "title": "Goal Star",
+        "imdb_rating": 8.1
+      },
+      {
+        "uuid": "f613ca19-8d79-4053-a676-1ebe84274b7f",
+        "title": "Rising Star",
+        "imdb_rating": 4.2
+      },
+      {
+        "uuid": "64154622-7178-461a-8183-f0bad57dbca6",
+        "title": "Bad Girls All Star Battle",
+        "imdb_rating": 7.4
+      },
+      {
+        "uuid": "cc84c155-84f2-49e4-b3d1-31351191dd23",
+        "title": "Rising Star",
+        "imdb_rating": 5.0
+      },
+      {
+        "uuid": "778517cb-385b-4272-aaaa-f5eec9d70ea6",
+        "title": "All-Star Academy",
+        "imdb_rating": 7.0
+      },
+      {
+        "uuid": "b802097a-34f7-49e1-9bba-571cd95df7b8",
+        "title": "Chris Hardwick's All-Star Celebrity Bowling",
+        "imdb_rating": 6.9
+      },
+      {
+        "uuid": "3ed34327-126a-4c29-bb76-1445efae9de4",
+        "title": "Five Star Hotel",
+        "imdb_rating": 6.4
+      },
+      {
+        "uuid": "799ea724-2834-49a6-be83-cf904ec1e764",
+        "title": "Lone Star Restoration",
+        "imdb_rating": 8.7
+      },
+      {
+        "uuid": "e4042003-de00-4873-bc6f-1eb6360d355e",
+        "title": "American Beauty Star",
+        "imdb_rating": 5.4
+      },
+      {
+        "uuid": "0999e796-127c-4025-87fc-ed9535c4ad92",
+        "title": "Star Wars Celebration 2017",
+        "imdb_rating": 8.3
+      },
+      {
+        "uuid": "6df09c7d-4cef-4ed9-a12a-fe825e3c0e76",
+        "title": "Rising Star",
+        "imdb_rating": 6.5
+      },
+      {
+        "uuid": "cd5c748d-553c-4ea4-833e-024b01eb64d5",
+        "title": "Glow Up: Britain's Next Make-Up Star",
+        "imdb_rating": 6.4
+      }
+    ]
+  },
+  {
+    "uuid": "7e2f32e9-fd94-4d78-80b9-ef0d5cdf0c23",
+    "name": "Talk-Show",
+    "filmworks": [
+      {
+        "uuid": "615110b2-bace-4d71-8324-7d9282d37bc1",
+        "title": "Top star magazín",
+        "imdb_rating": 2.9
+      },
+      {
+        "uuid": "38d4da3d-0ebb-43f4-9082-d1cda8cd0cbb",
+        "title": "Jimmy Kimmel Live's All-Star Salute to Jimmy Kimmel Live!",
+        "imdb_rating": 7.5
+      },
+      {
+        "uuid": "e78faeb5-1658-4aa5-921b-a45ea72bbc39",
+        "title": "The Star Jones Reynolds Report",
+        "imdb_rating": 4.4
+      },
+      {
+        "uuid": "dbcff36d-386b-44b2-893e-f9ed69e17621",
+        "title": "Super Star",
+        "imdb_rating": 3.9
+      },
+      {
+        "uuid": "d4bb4150-f667-4a1c-b719-d7c7dbb41376",
+        "title": "The Star Wars Show",
+        "imdb_rating": 8.0
+      },
+      {
+        "uuid": "02894e82-40e6-47fa-98dc-2a0f32bb62ee",
+        "title": "Mr. Plinkett's The Star Wars Awakens Review",
+        "imdb_rating": 8.0
+      },
+      {
+        "uuid": "879bbe4b-837e-42c6-89cb-274c843dc3f6",
+        "title": "Star Tech",
+        "imdb_rating": 8.8
+      },
+      {
+        "uuid": "f2636c90-8338-4962-8e97-ad00c2c18afc",
+        "title": "Star Wars: The Last Jedi Cast Live Q&A",
+        "imdb_rating": 3.9
+      }
+    ]
+  }
+]

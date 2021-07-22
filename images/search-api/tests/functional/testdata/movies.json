@@ -1,0 +1,246 @@
+[
+  {
+    "uuid": "010feda9-8137-453b-b1c8-1038600d4399",
+    "premium": True,
+    "imdb_rating": 6.1,
+    "title": "Star in the Dust",
+    "description": "The sheriff of Gunlock is planning to hang Sam Hall, who shot three farmers found on cattle land, at sundown. At the casino, betting is 8 to 3 he won't make it. The cattlemen are set to rescue Sam; the farmers hope to lynch him before he can be rescued; and Hall schemes for escape with his girl Nellie. But Sheriff Jorden is most concerned with finding out who hired Hall: a leading suspect is the sheriff's future brother-in-law.",
+    "actors_names": [
+      "John Agar",
+      "Mamie Van Doren",
+      "Richard Boone",
+      "Coleen Gray"
+    ],
+    "writers_names": [
+      "Lee Leighton",
+      "Oscar Brodney"
+    ],
+    "directors_names": [
+      "Charles F. Haas"
+    ],
+    "genres_names": [
+      "Romance",
+      "Drama",
+      "Western"
+    ],
+    "actors": [
+      {
+        "uuid": "9c7736cd-fe50-4b98-8cad-26a8f3b1b4bb",
+        "name": "John Agar"
+      },
+      {
+        "uuid": "eac593c4-84d7-4f81-af8a-490386117327",
+        "name": "Mamie Van Doren"
+      },
+      {
+        "uuid": "54077107-cd9d-4fe8-a498-e93758fa6f29",
+        "name": "Richard Boone"
+      },
+      {
+        "uuid": "dcb973f4-e07f-4257-962d-b9a7cc07d79d",
+        "name": "Coleen Gray"
+      }
+    ],
+    "writers": [
+      {
+        "uuid": "8a425c50-9433-4c00-b262-f72cf131aa7c",
+        "name": "Lee Leighton"
+      },
+      {
+        "uuid": "544596a7-bec8-4af0-87d2-e4f07756d6e0",
+        "name": "Oscar Brodney"
+      }
+    ],
+    "directors": [
+      {
+        "uuid": "d6a73378-1259-492a-a3ee-7bf66e13dd66",
+        "name": "Charles F. Haas"
+      }
+    ],
+    "genres": [
+      {
+        "uuid": "b7d7086c-4778-493f-909f-04629b2bba3c",
+        "name": "Romance"
+      },
+      {
+        "uuid": "16a5c9f1-1939-487d-aa1a-a5aed5a72f85",
+        "name": "Drama"
+      },
+      {
+        "uuid": "de6f20d6-91f0-446d-af7f-e435ce97b539",
+        "name": "Western"
+      }
+    ]
+  },
+  {
+    "uuid": "025aa6dd-a2ff-4513-b83c-29a940a8312f",
+    "premium": False,
+    "imdb_rating": 6.7,
+    "title": "Star of Midnight",
+    "description": "Friend Tim Winthrop asks criminal lawyer and amateur detective Clay Dalzell to find his girl, Alice, who disappeared a year earlier without a trace. When they go to the theater with Clay's would-be fiancée, Donna Mantin, Tim recognizes the star, Mary Smith, as his girl, and yells \"Alice,\" after which she bolts from the stage and disappears once again. Reporter Tommy Tennant knows why she bolted, but before he can tell Clay the reason, he is shot dead and Clay is wounded slightly in Clay's apartment. The many suspects include Roger Classon and his wife, Jerry, who are looking for Alice to testify and save Roger's friend from the electric chair for a murder he didn't commit; Abe Ohlman, the producer of Mary's show; and gangster Jimmy Kinland who seems to know more than he's telling. It's up to Clay, with the help of Donna, to trap the murderer and find Alice.",
+    "actors_names": [
+      "William Powell",
+      "Ginger Rogers",
+      "Paul Kelly",
+      "Gene Lockhart"
+    ],
+    "writers_names": [
+      "Arthur Somers Roche",
+      "Edward Kaufman",
+      "Anthony Veiller",
+      "Howard J. Green"
+    ],
+    "directors_names": [
+      "Stephen Roberts"
+    ],
+    "genres_names": [
+      "Romance",
+      "Comedy",
+      "Mystery"
+    ],
+    "actors": [
+      {
+        "uuid": "9298b43a-9cc3-4a11-a74d-5f5885f4d396",
+        "name": "William Powell"
+      },
+      {
+        "uuid": "26aaf6a7-c17e-4a9c-b497-d85801dbe0b1",
+        "name": "Ginger Rogers"
+      },
+      {
+        "uuid": "df71d9ac-638c-4c6d-a045-ada92d196463",
+        "name": "Paul Kelly"
+      },
+      {
+        "uuid": "fc38579b-ca6e-4998-ac6e-a351bc265c0e",
+        "name": "Gene Lockhart"
+      }
+    ],
+    "writers": [
+      {
+        "uuid": "3001fb13-fd81-430f-9313-3a0cf1fecdeb",
+        "name": "Arthur Somers Roche"
+      },
+      {
+        "uuid": "8819bbfa-8d7c-479b-baaa-b1b2b1eb8e07",
+        "name": "Edward Kaufman"
+      },
+      {
+        "uuid": "42172f6c-f0b1-48f7-a605-5d7fe98c893d",
+        "name": "Anthony Veiller"
+      },
+      {
+        "uuid": "cda3d63d-bb51-4e37-b88a-4205a9735c48",
+        "name": "Howard J. Green"
+      }
+    ],
+    "directors": [
+      {
+        "uuid": "c7aa287c-bd5a-4d08-b094-d45716154363",
+        "name": "Stephen Roberts"
+      }
+    ],
+    "genres": [
+      {
+        "uuid": "b7d7086c-4778-493f-909f-04629b2bba3c",
+        "name": "Romance"
+      },
+      {
+        "uuid": "2f3e4618-69f4-496f-a5da-51d8b136275e",
+        "name": "Comedy"
+      },
+      {
+        "uuid": "d85eed99-3c54-44aa-91c5-389deb93be21",
+        "name": "Mystery"
+      }
+    ]
+  },
+  {
+    "uuid": "0b4edff9-e5ee-4c97-a948-49ee34c419a1",
+    "imdb_rating": 6.8,
+    "premium": False,
+    "title": "Star Spangled Rhythm",
+    "description": "Pop, a security guard at Paramount has told his son that he's the head of the studio. When his son arrives in Hollywood on shore leave with his buddies, Pop enlists the aid of the studio's dizzy switchboard operator in pulling off the charade. Things get more complicated when Pop agrees to put together a show for the Navy starring Paramount's top contract players.",
+    "actors_names": [
+      "Bing Crosby",
+      "Bob Hope",
+      "Fred MacMurray",
+      "Franchot Tone"
+    ],
+    "writers_names": [
+      "George S. Kaufman",
+      "Harry Tugend",
+      "Melvin Frank",
+      "Arthur A. Ross",
+      "Norman Panama"
+    ],
+    "directors_names": [
+      "George Marshall",
+      "A. Edward Sutherland"
+    ],
+    "genres_names": [
+      "Musical",
+      "Comedy"
+    ],
+    "actors": [
+      {
+        "uuid": "ecba84a1-7913-4e10-945a-2f330df63b80",
+        "name": "Bing Crosby"
+      },
+      {
+        "uuid": "e2b69b1d-ad66-44f5-a78b-fc6bfa1ed532",
+        "name": "Bob Hope"
+      },
+      {
+        "uuid": "6afe2b54-474d-40db-920b-adecfa5550ea",
+        "name": "Fred MacMurray"
+      },
+      {
+        "uuid": "509a5473-8fde-4a90-9ff8-b62f6dd44f94",
+        "name": "Franchot Tone"
+      }
+    ],
+    "writers": [
+      {
+        "uuid": "23adf655-022a-430f-af98-82e0b4752a58",
+        "name": "George S. Kaufman"
+      },
+      {
+        "uuid": "20783cae-5cea-4a0c-8fe9-89a3154de2a5",
+        "name": "Harry Tugend"
+      },
+      {
+        "uuid": "48d5a1e5-8fd9-49d4-8488-6b8544205d08",
+        "name": "Melvin Frank"
+      },
+      {
+        "uuid": "261d69b5-1220-4c7e-9ca9-330d0b30d752",
+        "name": "Arthur A. Ross"
+      },
+      {
+        "uuid": "3c00b54d-3fc8-4f92-90cc-414c7490e5b6",
+        "name": "Norman Panama"
+      }
+    ],
+    "directors": [
+      {
+        "uuid": "421173b2-b05e-4449-8ce6-321e69bb98ff",
+        "name": "George Marshall"
+      },
+      {
+        "uuid": "ab1b3b87-b582-49c7-90eb-8b8a812aec09",
+        "name": "A. Edward Sutherland"
+      }
+    ],
+    "genres": [
+      {
+        "uuid": "4a58cdce-481e-42e9-b58e-12a24ff87a93",
+        "name": "Musical"
+      },
+      {
+        "uuid": "2f3e4618-69f4-496f-a5da-51d8b136275e",
+        "name": "Comedy"
+      }
+    ]
+  }
+]

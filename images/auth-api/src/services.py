@@ -120,10 +120,7 @@ class TokenService:
         if not user:
             raise InvalidEmail
 
-        user_roles = ''
-        for role in RoleService.get_user_roles(email):
-            user_roles = user_roles + ',' + role.role_name
-            user_roles = user_roles.strip(',')
+        user_roles = RoleService.get_user_roles(email)
 
         if user_roles:
             access_token = create_access_token(identity=user.email,

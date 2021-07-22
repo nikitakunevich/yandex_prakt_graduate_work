@@ -1,0 +1,54 @@
+[
+  {
+    "uuid": "0040371d-f875-4d42-ab17-ffaf3cacfb91",
+    "full_name": "Chris Cooper",
+    "roles": [
+      "actor"
+    ],
+    "film_ids": [
+      "93d538fe-1328-4b4c-a327-f61a80f25a3c"
+    ]
+  },
+  {
+    "uuid": "00573d04-34ba-4b52-808c-49c428af704d",
+    "full_name": "June Laverick",
+    "roles": [
+      "actor"
+    ],
+    "film_ids": [
+      "a533e14d-9890-469b-9771-48ec58eb6fe2"
+    ]
+  },
+  {
+    "uuid": "0087b9b1-e63f-4b91-85d7-f87e8f574ee1",
+    "full_name": "C. Andrew Nelson",
+    "roles": [
+      "actor"
+    ],
+    "film_ids": [
+      "973fb0ca-3bfe-4960-a4f9-844413823641"
+    ]
+  },
+  {
+    "uuid": "008a99fd-2622-4ea8-9c1a-0dbd7b5efa92",
+    "full_name": "Richard Lewis",
+    "roles": [
+      "actor"
+    ],
+    "film_ids": [
+      "4b5a4b3d-edd5-4671-8ee0-21689ecbf58d"
+    ]
+  },
+  {
+    "uuid": "00fefb1f-825c-44d6-9cd6-a9d2693e2c49",
+    "full_name": "Terry Farrell",
+    "roles": [
+      "actor"
+    ],
+    "film_ids": [
+      "6199aaae-b815-4062-8590-e23d29536123",
+      "4bbf2eda-381c-4479-8c7b-ebc91e70fa89",
+      "982a0bef-7787-43af-8d75-ab10f34ea47a"
+    ]
+  }
+]
