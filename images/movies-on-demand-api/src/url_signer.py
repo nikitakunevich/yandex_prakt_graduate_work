@@ -30,8 +30,8 @@ def get_signed_url(movie_file_name: str) -> str:
     """Возвращает url с подписью."""
     url = BASE_URL + "/" + PATH_PREFIX + "/" + movie_file_name
     expire_date = datetime.now() + timedelta(hours=settings.url_expire_hours)
-
     signed_url = cloudfront_signer.generate_presigned_url(
         url, date_less_than=expire_date
     )
+
     return signed_url

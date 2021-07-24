@@ -18,11 +18,9 @@ services:
       DJANGO_SETTINGS_MODULE: 'config.settings.prod'
       AWS_ACCESS_KEY_ID:
       AWS_SECRET_ACCESS_KEY:
-      AWS_STORAGE_BUCKET_NAME: movies
+      AWS_STORAGE_BUCKET_NAME:
     ports:
       - 8000:8000
-    depends_on:
-      - postgres
     volumes:
       - static:/static
 
@@ -34,7 +32,7 @@ services:
       PG_URL: postgresql://postgres:postgres@postgres/postgres
       ES_URL: http://elasticsearch:9200
       REDIS_HOST: redis
-      LOG_LEVEL:
+      LOG_LEVEL: DEBUG
 
   search-api:
     restart: unless-stopped
@@ -46,11 +44,23 @@ services:
       REDIS_HOST: redis
       LOG_LEVEL: DEBUG
       JWT_PUBLIC_KEY:
-    depends_on:
-      - elasticsearch
-      - redis
     ports:
       - 8888:8888
+
+  movies-on-demand-api:
+    restart: unless-stopped
+    build:
+      context: images/movies-on-demand-api
+    environment:
+      LOG_LEVEL: DEBUG
+      CF_KEY_ID:
+      CF_DOMAIN_NAME:
+      CF_PRIVATE_KEY_FILE: private_key.pem
+      URL_PATH_PREFIX: assets/movies
+      URL_EXPIRE_HOURS: 8
+      SEARCH_API_HOST: search-api:8888
+    ports:
+      - 7777:8000
 
   auth-api:
     restart: unless-stopped
@@ -69,9 +79,6 @@ services:
       ROOT_SESSION_HOURS: 2
       JWT_PRIVATE_KEY:
       JWT_PUBLIC_KEY:
-    depends_on:
-      - redis
-      - postgres
     ports:
       - 5000:5000
 
@@ -84,8 +91,6 @@ services:
       - static:/static
     ports:
       - 8080:80
-    depends_on:
-      - admin-panel
 
 
   elasticsearch:

@@ -120,7 +120,7 @@ class TokenService:
         if not user:
             raise InvalidEmail
 
-        user_roles = RoleService.get_user_roles(email)
+        user_roles = ','.join(RoleService.get_user_roles(email))
 
         if user_roles:
             access_token = create_access_token(identity=user.email,

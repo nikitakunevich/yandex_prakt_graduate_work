@@ -51,6 +51,9 @@
       "premium": {
         "type": "boolean"
       },
+      "filename": {
+        "type": "keyword"
+      },
       "genres_names": {
         "type": "text",
         "analyzer": "ru_en"

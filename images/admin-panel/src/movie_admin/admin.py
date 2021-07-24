@@ -22,9 +22,9 @@ class FilmworkAdmin(admin.ModelAdmin):
     list_display = ('title', 'type', 'creation_date', 'rating', 'premium')
     list_filter = ('type', 'rating')
     search_fields = ('title', 'description', 'id')
-
-    fields = ('title', 'type', 'description', 'creation_date', 'certificate',
+    fields = ('id', 'title', 'type', 'description', 'creation_date', 'certificate',
               'file_path', 'mpaa_age_rating', 'rating', 'premium')
+    readonly_fields = ('id',)
 
     inlines = [
         GenreFilmWorkInline,

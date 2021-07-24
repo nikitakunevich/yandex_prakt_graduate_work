@@ -2,8 +2,10 @@ case $1 in
   start_services)
     docker-compose up -d postgres redis elasticsearch nginx
     sleep 3
-    JWT_PUBLIC_KEY=$(cat keys/rs256.pub) docker-compose up -d --build search-api admin-panel
+    JWT_PUBLIC_KEY=$(cat keys/rs256.pub) docker-compose up -d --build search-api
     JWT_PRIVATE_KEY=$(cat keys/rs256.pem) JWT_PUBLIC_KEY=$(cat keys/rs256.pub) docker-compose up -d --build auth-api
+    docker-compose up -d --build admin-panel
+    docker-compose up -d --build movies-on-demand-api
   ;;
   load_es_index)
     bash -c "curl  -XPUT http://localhost:9200/movies -H 'Content-Type: application/json' -d @es-schemas/es.movies.schema.json \

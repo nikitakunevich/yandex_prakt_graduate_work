@@ -58,6 +58,7 @@ class FilmShort(APIModel):
 class GenreDetail(APIModel):
     uuid: str
     name: str
+
     # film_ids: List[FilmShort]
 
     @classmethod
@@ -78,14 +79,16 @@ class FilmDetails(APIModel):
     actors: List[PersonShort]
     writers: List[PersonShort]
     directors: List[PersonShort]
+    premium: bool
 
     @classmethod
     def from_db_model(cls, film: db.models.Film):
-        return cls(
+        return FilmDetails(
             uuid=film.uuid,
             title=film.title,
             imdb_rating=film.imdb_rating,
             description=film.description,
+            premium=film.premium,
             genre=[Genre(uuid=genre.uuid, name=genre.name) for genre in film.genres],
             actors=[
                 PersonShort(uuid=person.uuid, full_name=person.name)
@@ -100,3 +103,12 @@ class FilmDetails(APIModel):
                 for person in film.directors
             ],
         )
+
+
+class PrivateFilmDetails(FilmDetails):
+    filename: Optional[str]
+
+    @classmethod
+    def from_db_model(cls, film: db.models.Film):
+        film_details = super().from_db_model(film)
+        return PrivateFilmDetails(**film_details.dict(), filename=film.filename)

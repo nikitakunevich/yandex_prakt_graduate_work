@@ -1,6 +1,6 @@
 """Содержит модели для работы с данными."""
 from uuid import UUID
-
+from typing import Optional
 from pydantic import BaseModel
 
 
@@ -11,7 +11,7 @@ class MovieIDRequest(BaseModel):
 
 class Movie(BaseModel):
     """Экземпляр фильма."""
-    id: UUID
-    name: str
-    file_name: str
-    is_premium: bool
+    uuid: str
+    title: str
+    filename: Optional[str]
+    premium: bool

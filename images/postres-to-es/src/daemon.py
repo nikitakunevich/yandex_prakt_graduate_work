@@ -1,5 +1,6 @@
 import sys
 import os
+import os.path
 import argparse
 import time
 import uuid
@@ -58,6 +59,7 @@ class MovieElastic(BaseModel):
     directors: List[Dict[ObjectId, ObjectName]]
     genres: List[Dict[ObjectId, ObjectName]]
     premium: Optional[bool]
+    filename: Optional[str]
 
 
 class Filmwork(BaseModel):
@@ -169,6 +171,7 @@ def denormalize_film_data(pg_url: str, target):
                     fw.rating,
                     fw.type,
                     fw.premium,
+                    fw.file_path,
                     fwp.persons,
                     fwg.genres
                 FROM "public".film_work fw
@@ -233,7 +236,8 @@ def transform_movies_data(target):
             actors_names = [person['full_name'] for person in film_work['persons'] if person['role'] == 'actor']
             writers_names = [person['full_name'] for person in film_work['persons'] if person['role'] == 'writer']
             genres_names = [genre['name'] for genre in film_work['genres']]
-
+            file_path = film_work.get('file_path', None)
+            filename = os.path.basename(file_path) if file_path else None
             movie = MovieElastic(uuid=str(film_work['id']),
                                  imdb_rating=film_work['rating'],
                                  genres_names=genres_names,
@@ -246,7 +250,8 @@ def transform_movies_data(target):
                                  writers=writers,
                                  directors=directors,
                                  genres=genres,
-                                 premium=film_work['premium']
+                                 premium=film_work['premium'],
+                                 filename=filename
                                  )
 
             batch.append(movie.dict())

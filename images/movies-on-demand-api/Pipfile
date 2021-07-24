@@ -10,6 +10,7 @@ pydantic = "*"
 uvicorn = "*"
 cryptography = "*"
 pyjwt = "*"
+httpx = "*"
 
 [dev-packages]
 black = "==21.6b0"

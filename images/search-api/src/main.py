@@ -3,7 +3,7 @@ import logging.config
 import defaults
 import jwt
 import uvicorn as uvicorn
-from api_v1 import film, genre, person
+from api_v1 import film, genre, person, private
 from config import config
 from db import cache, elastic
 from elasticsearch import AsyncElasticsearch
@@ -43,6 +43,7 @@ def health_check():
 app.include_router(film.router, prefix="/v1/film", tags=["film"])
 app.include_router(person.router, prefix="/v1/person", tags=["person"])
 app.include_router(genre.router, prefix="/v1/genre", tags=["genre"])
+app.include_router(private.router, prefix="/v1/private", tags=["private"])
 
 if __name__ == "__main__":
     uvicorn.run(

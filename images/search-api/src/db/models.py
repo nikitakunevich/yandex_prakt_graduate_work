@@ -19,6 +19,8 @@ class Film(BaseESModel):
     imdb_rating: Optional[float]
     title: str
     description: Optional[str]
+    premium: bool
+    filename: Optional[str]
 
     actors_names: List[str]
     writers_names: List[str]

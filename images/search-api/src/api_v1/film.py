@@ -15,9 +15,9 @@ router = APIRouter()
 
 @router.get("/{film_id:uuid}", response_model=FilmDetails)
 async def film_details(
-    request: Request,
-    film_id: UUID,
-    film_service: FilmService = Depends(get_film_service),
+        request: Request,
+        film_id: UUID,
+        film_service: FilmService = Depends(get_film_service),
 ) -> FilmDetails:
     film = await film_service.get_by_id(
         str(film_id), filter_premium=not can_read_premium(request.auth)
@@ -32,13 +32,13 @@ async def film_details(
 
 @router.get("/", response_model=List[FilmShort])
 async def film_search(
-    request: Request,
-    query: Optional[str] = Query(""),
-    filter_genre: Optional[UUID] = Query(None, alias="filter[genre]"),
-    sort: Optional[str] = Query(None, regex="^-?[a-zA-Z_]+$"),
-    page_number: int = Query(1, alias="page[number]", gt=0),
-    page_size: int = Query(50, alias="page[size]", gt=0),
-    film_service: FilmService = Depends(get_film_service),
+        request: Request,
+        query: Optional[str] = Query(""),
+        filter_genre: Optional[UUID] = Query(None, alias="filter[genre]"),
+        sort: Optional[str] = Query(None, regex="^-?[a-zA-Z_]+$"),
+        page_number: int = Query(1, alias="page[number]", gt=0),
+        page_size: int = Query(50, alias="page[size]", gt=0),
+        film_service: FilmService = Depends(get_film_service),
 ) -> List[FilmShort]:
     logger.debug(f"search sort: {sort}")
     films = await film_service.search(

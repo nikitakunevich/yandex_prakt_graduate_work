@@ -17,6 +17,7 @@ class Roles(str, Enum):
     admin = "admin"
     child = "child"
     adult = "adult"
+    premium = "premium"
 
 
 def role_to_permissions(role: Roles):
@@ -24,13 +25,17 @@ def role_to_permissions(role: Roles):
 
 
 class Permissions(str, Enum):
+    filename_read = "movie.filename:read"
     premium_read = "premium:read"
     movie_read = "movie:read"
     movie_adult_read = "movie.adult:read"
 
 
 _role_permissions = {
-    Roles.admin: [Permissions.movie_read, Permissions.movie_adult_read],
+    Roles.premium: [
+        Permissions.movie_read, Permissions.filename_read, Permissions.movie_adult_read, Permissions.premium_read
+    ],
+    Roles.admin: [Permissions.movie_read, Permissions.movie_adult_read, Permissions.filename_read],
     Roles.child: [Permissions.movie_read],
     Roles.adult: [Permissions.movie_read, Permissions.movie_adult_read]
 }
@@ -70,14 +75,14 @@ class JWTAuthBackend(AuthenticationBackend):
             raise AuthenticationError("Invalid credentials")
 
         # In case if token is valid returns an object of the authorized user
-        user_permissions = []
+        user_permissions = set()
         is_premium = jwt_decoded["prm"]
         if is_premium:
             filter_premium.set(False)
-            user_permissions.append(Permissions.premium_read)
+            user_permissions.add(Permissions.premium_read)
         logging.debug(
             f"token is valid, user: {jwt_decoded['sub']} roles: {jwt_decoded['roles']}, jwt: {jwt_decoded}"
         )
-        for role in jwt_decoded["roles"]:
-            user_permissions.extend(role_to_permissions(role))
-        return AuthCredentials(user_permissions), SimpleUser(jwt_decoded["sub"])
+        for role in jwt_decoded["roles"].split(','):
+            user_permissions.update(role_to_permissions(role))
+        return AuthCredentials(list(user_permissions)), SimpleUser(jwt_decoded["sub"])
