@@ -21,7 +21,7 @@ echo \
 
 apt-get update -y
 
-apt-get install docker-ce docker-ce-cli containerd.io -y
+apt-get install docker-ce docker-ce-cli containerd.io postgresql-client -y
 
 
 docker run -d -p 9200:9200 -e "discovery.type=single-node" -e ES_JAVA_OPTS="-Xms256m -Xmx256m" docker.elastic.co/elasticsearch/elasticsearch:7.7.0

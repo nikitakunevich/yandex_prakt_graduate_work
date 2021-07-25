@@ -57,9 +57,9 @@ resource "aws_launch_configuration" "movies-node" {
 }
 
 resource "aws_autoscaling_group" "movies-nodes" {
-  desired_capacity     = 1
+  desired_capacity     = 2
   launch_configuration = aws_launch_configuration.movies-node.id
-  max_size             = 2
+  max_size             = 4
   min_size             = 1
   name                 = "terraform-eks-movies"
   vpc_zone_identifier  = tolist(aws_subnet.eks.*.id)

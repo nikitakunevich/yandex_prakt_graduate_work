@@ -103,6 +103,16 @@ resource "kubernetes_deployment" "auth-api" {
             name  = "ROOT_SESSION_HOURS"
             value = "2"
           }
+
+          env {
+            name  = "JWT_PUBLIC_KEY"
+            value = file("jwt-keys/rs256.pub")
+          }
+
+          env {
+            name  = "JWT_PRIVATE_KEY"
+            value = file("jwt-keys/rs256.pem")
+          }
         }
       }
     }

@@ -24,7 +24,7 @@ SET default_table_access_method = heap;
 -- Name: film_work; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.film_work (
+CREATE TABLE IF NOT EXISTS public.film_work (
     id uuid NOT NULL,
     title text NOT NULL,
     description text,
@@ -44,7 +44,7 @@ ALTER TABLE public.film_work OWNER TO postgres;
 -- Name: genre; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.genre (
+CREATE TABLE IF NOT EXISTS public.genre (
     id uuid NOT NULL,
     name text NOT NULL,
     description text,
@@ -59,7 +59,7 @@ ALTER TABLE public.genre OWNER TO postgres;
 -- Name: genre_film_work; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.genre_film_work (
+CREATE TABLE IF NOT EXISTS public.genre_film_work (
     id uuid NOT NULL,
     film_work_id uuid NOT NULL,
     genre_id uuid NOT NULL,
@@ -73,7 +73,7 @@ ALTER TABLE public.genre_film_work OWNER TO postgres;
 -- Name: person; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.person (
+CREATE TABLE IF NOT EXISTS public.person (
     id uuid NOT NULL,
     full_name text NOT NULL,
     birth_date date,
@@ -88,7 +88,7 @@ ALTER TABLE public.person OWNER TO postgres;
 -- Name: person_film_work; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.person_film_work (
+CREATE TABLE IF NOT EXISTS public.person_film_work (
     id uuid NOT NULL,
     film_work_id uuid NOT NULL,
     person_id uuid NOT NULL,

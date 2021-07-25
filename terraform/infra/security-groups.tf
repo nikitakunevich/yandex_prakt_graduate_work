@@ -153,7 +153,7 @@ resource "aws_security_group" "bastion" {
 }
 
 resource "aws_security_group_rule" "bastion-es-from-k8s-nodes" {
-  description              = "Allow worker Kubelets and pods to receive communication from ALBs"
+  description              = "Allow EKS nodes to connect to Elasticsearch on Bastion"
   from_port                = 9200
   to_port                  = 9200
   protocol                 = "tcp"

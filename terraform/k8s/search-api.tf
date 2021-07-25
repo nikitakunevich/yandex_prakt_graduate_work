@@ -1,8 +1,8 @@
-resource "kubernetes_deployment" "movies-on-demand-api" {
+resource "kubernetes_deployment" "search-api" {
   metadata {
-    name = "movies-on-demand-api"
+    name = "search-api"
     labels = {
-      app = "movies-on-demand-api"
+      app = "search-api"
     }
   }
 
@@ -10,23 +10,23 @@ resource "kubernetes_deployment" "movies-on-demand-api" {
     replicas = 1
     selector {
       match_labels = {
-        app = "movies-on-demand-api"
+        app = "search-api"
       }
     }
     template {
       metadata {
         labels = {
-          app = "movies-on-demand-api"
+          app = "search-api"
         }
       }
       spec {
         container {
-          image = "${data.terraform_remote_state.infra.outputs.movies-on-demand-api-ecr-url}:latest"
-          name  = "movies-on-demand-api"
+          image = "${data.terraform_remote_state.infra.outputs.search-api-ecr-url}:latest"
+          name  = "search-api"
 
           port {
             name           = "http"
-            container_port = 8000
+            container_port = 8888
           }
 
           liveness_probe {
@@ -50,53 +50,34 @@ resource "kubernetes_deployment" "movies-on-demand-api" {
           }
 
           env {
-            name  = "FLASK_CONFIG"
-            value = "production"
-          }
-
-          env {
             name  = "REDIS_HOST"
             value = data.terraform_remote_state.infra.outputs.redis_endpoint
           }
 
           env {
-            name  = "LOG_LEVEL"
-            value = "INFO"
+            name  = "REDIS_PORT"
+            value = "6379"
           }
 
-          env {
-            name  = "CF_KEY_ID"
-            value = data.terraform_remote_state.infra.outputs.cloudfront-key-id
-          }
 
           env {
-            name  = "CF_DOMAIN_NAME"
-            value = data.terraform_remote_state.infra.outputs.cloudfront-domain-name
-          }
-
-          env {
-            name  = "CF_PRIVATE_KEY_FILE"
-            value = "private_key.pem"
-          }
-
-          env {
-            name  = "URL_PATH_PREFIX"
-            value = "assets"
-          }
-
-          env {
-            name  = "URL_EXPIRE_HOURS"
-            value = "8"
-          }
-
-          env {
-            name  = "AUTH_PUBLIC_KEY"
+            name  = "JWT_PUBLIC_KEY"
             value = file("jwt-keys/rs256.pub")
           }
 
           env {
-            name  = "SEARCH_API_HOST"
-            value = "search-api"
+            name  = "ES_URL"
+            value = "http://${data.terraform_remote_state.infra.outputs.bastion-private-ip}:9200"
+          }
+
+          env {
+            name  = "LOG_LEVEL"
+            value = "WARNING"
+          }
+
+          env {
+            name  = "CACHE_TTL"
+            value = "300"
           }
         }
       }
@@ -104,11 +85,11 @@ resource "kubernetes_deployment" "movies-on-demand-api" {
   }
 }
 
-resource "kubernetes_service" "movies-on-demand-api" {
+resource "kubernetes_service" "search-api" {
   metadata {
-    name = "movies-on-demand-api"
+    name = "search-api"
     labels = {
-      app = "movies-on-demand-api"
+      app = "search-api"
     }
     annotations = {
       "prometheus.io/scrape" = "true"
@@ -118,7 +99,7 @@ resource "kubernetes_service" "movies-on-demand-api" {
   spec {
     type = "NodePort"
     selector = {
-      "app" = "movies-on-demand-api"
+      "app" = "search-api"
     }
     port {
       port        = 80
@@ -128,9 +109,9 @@ resource "kubernetes_service" "movies-on-demand-api" {
   }
 }
 
-resource "kubernetes_ingress" "movies-on-demand-api" {
+resource "kubernetes_ingress" "search-api" {
   metadata {
-    name = "movies-on-demand-api"
+    name = "search-api"
     annotations = {
       "kubernetes.io/ingress.class"                            = "alb"
       "alb.ingress.kubernetes.io/scheme"                       = "internet-facing"
@@ -146,12 +127,12 @@ resource "kubernetes_ingress" "movies-on-demand-api" {
       http {
         path {
           backend {
-            service_name = "movies-on-demand-api"
+            service_name = "search-api"
             service_port = "http"
           }
         }
       }
-      host = "movies-on-demand-api.movies.hi-tech4.cloud"
+      host = "search-api.movies.hi-tech4.cloud"
     }
   }
 }

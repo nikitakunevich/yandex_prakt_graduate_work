@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     cf_private_key_file: str
     url_path_prefix: str
     url_expire_hours: int
-    auth_public_key = open('rs256.pub', 'rb').read()
+    auth_public_key: str = open('rs256.pub', 'rb').read()
     search_api_host: str
 
 

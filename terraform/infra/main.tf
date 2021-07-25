@@ -2,7 +2,7 @@ terraform {
   required_version = "= 0.13.5"
 
   backend "s3" {
-    bucket         = "tfstate-190103567417"
+    bucket         = "tfstate-572344594118"
     key            = "terraform.tfstate"
     region         = "us-east-1"
     dynamodb_table = "tfstate-locks"

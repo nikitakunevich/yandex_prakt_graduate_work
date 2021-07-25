@@ -39,3 +39,7 @@ resource "aws_s3_bucket_policy" "movies-policy" {
 
   depends_on = [aws_s3_bucket_public_access_block.movies]
 }
+
+output "movies_bucket_name" {
+  value = aws_s3_bucket.movies.bucket
+}
