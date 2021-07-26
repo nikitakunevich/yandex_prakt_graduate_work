@@ -16,7 +16,7 @@
 
 ## Observability
 - logging
-- Prometheus metric exporter
+- Prometheus metrics exporter
 
 ## Reliability
 - backoff

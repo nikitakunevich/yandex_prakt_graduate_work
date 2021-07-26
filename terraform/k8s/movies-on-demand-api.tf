@@ -81,7 +81,7 @@ resource "kubernetes_deployment" "movies-on-demand-api" {
 
           env {
             name  = "URL_PATH_PREFIX"
-            value = "assets"
+            value = "assets/movies"
           }
 
           env {
@@ -154,4 +154,19 @@ resource "kubernetes_ingress" "movies-on-demand-api" {
       host = "movies-on-demand-api.movies.hi-tech4.cloud"
     }
   }
+}
+
+data "kubernetes_ingress" "movies-on-demand-api" {
+  depends_on = [kubernetes_ingress.movies-on-demand-api]
+  metadata {
+    name = "movies-on-demand-api"
+  }
+}
+
+resource "aws_route53_record" "movies-on-demand-api" {
+  zone_id = data.terraform_remote_state.infra.outputs.movies_zone.zone_id
+  name    = "movies-on-demand-api.${data.terraform_remote_state.infra.outputs.movies_zone.name}"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [data.kubernetes_ingress.movies-on-demand-api.status.0.load_balancer.0.ingress.0.hostname]
 }

@@ -19,6 +19,7 @@ resource "aws_s3_bucket_public_access_block" "movies" {
 }
 
 resource "aws_s3_bucket_policy" "movies-policy" {
+
   bucket = aws_s3_bucket.movies.id
 
   policy = jsonencode({
@@ -34,10 +35,19 @@ resource "aws_s3_bucket_policy" "movies-policy" {
           "${aws_s3_bucket.movies.arn}/assets/*",
         ]
       },
+      {
+        Sid       = "AllowEKSReadWrite"
+        Effect    = "Allow"
+        Principal = { "AWS" : ["arn:aws:iam::${var.aws_account_id}:role/terraform-eks-movies-node"] }
+        Action    = ["s3:GetObject", "s3:GetObjectVersion", "s3:PutObject", "s3:DeleteObject"]
+        Resource = [
+          "${aws_s3_bucket.movies.arn}/assets/*",
+        ]
+      },
     ]
   })
 
-  depends_on = [aws_s3_bucket_public_access_block.movies]
+  depends_on = [aws_s3_bucket_public_access_block.movies, aws_iam_role.movies-node]
 }
 
 output "movies_bucket_name" {

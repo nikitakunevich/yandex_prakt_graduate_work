@@ -170,3 +170,18 @@ resource "kubernetes_ingress" "auth-api" {
     }
   }
 }
+
+data "kubernetes_ingress" "auth-api" {
+  depends_on = [kubernetes_ingress.auth-api]
+  metadata {
+    name = "auth-api"
+  }
+}
+
+resource "aws_route53_record" "auth-api" {
+  zone_id = data.terraform_remote_state.infra.outputs.movies_zone.zone_id
+  name    = "auth-api.${data.terraform_remote_state.infra.outputs.movies_zone.name}"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [data.kubernetes_ingress.auth-api.status.0.load_balancer.0.ingress.0.hostname]
+}

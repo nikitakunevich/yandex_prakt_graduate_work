@@ -136,3 +136,18 @@ resource "kubernetes_ingress" "search-api" {
     }
   }
 }
+
+data "kubernetes_ingress" "search-api" {
+  depends_on = [kubernetes_ingress.search-api]
+  metadata {
+    name = "search-api"
+  }
+}
+
+resource "aws_route53_record" "search-api" {
+  zone_id = data.terraform_remote_state.infra.outputs.movies_zone.zone_id
+  name    = "search-api.${data.terraform_remote_state.infra.outputs.movies_zone.name}"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [data.kubernetes_ingress.search-api.status.0.load_balancer.0.ingress.0.hostname]
+}

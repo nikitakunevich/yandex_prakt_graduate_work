@@ -176,8 +176,10 @@ resource "kubernetes_ingress" "admin-panel" {
       "kubernetes.io/ingress.class"                            = "alb"
       "alb.ingress.kubernetes.io/scheme"                       = "internal"
       "alb.ingress.kubernetes.io/security-groups"              = data.terraform_remote_state.infra.outputs.allow-all-ingress-tcp-alb-sg
+      "alb.ingress.kubernetes.io/certificate-arn"              = data.terraform_remote_state.infra.outputs.acm-certificate-arn
       "alb.ingress.kubernetes.io/healthcheck-interval-seconds" = "60"
-      "alb.ingress.kubernetes.io/healthcheck-path"             = "/admin"
+      "alb.ingress.kubernetes.io/healthcheck-path"             = "/"
+      "alb.ingress.kubernetes.io/success-codes"                = "403"
     }
   }
 
@@ -191,7 +193,7 @@ resource "kubernetes_ingress" "admin-panel" {
           }
         }
       }
-      host = "admin-panel.private.hi-tech4.cloud"
+      host = "admin-panel.movies.hi-tech4.cloud"
     }
   }
 }
@@ -214,4 +216,19 @@ resource "kubernetes_config_map" "admin-panel-nginx-proxy" {
   data = {
     "movie_admin.conf" = file("files/nginx/movie_admin.conf")
   }
+}
+
+data "kubernetes_ingress" "admin-panel" {
+  depends_on = [kubernetes_ingress.admin-panel]
+  metadata {
+    name = "admin-panel"
+  }
+}
+
+resource "aws_route53_record" "admin-panel" {
+  zone_id = data.terraform_remote_state.infra.outputs.movies_zone.zone_id
+  name    = "admin-panel.${data.terraform_remote_state.infra.outputs.movies_zone.name}"
+  type    = "CNAME"
+  ttl     = "300"
+  records = [data.kubernetes_ingress.admin-panel.status.0.load_balancer.0.ingress.0.hostname]
 }

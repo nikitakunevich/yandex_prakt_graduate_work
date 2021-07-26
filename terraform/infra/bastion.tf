@@ -51,7 +51,7 @@ resource "aws_instance" "bastion" {
 
   provisioner "remote-exec" {
     inline = [
-      "sleep 300",
+      "sleep 600",
       "curl  -XPUT http://localhost:9200/movies -H 'Content-Type: application/json' -d @/home/ubuntu/es.movies.schema.json",
       "curl  -XPUT http://localhost:9200/persons -H 'Content-Type: application/json' -d @/home/ubuntu/es.persons.schema.json",
       "curl  -XPUT http://localhost:9200/genres -H 'Content-Type: application/json' -d @/home/ubuntu/es.genres.schema.json"

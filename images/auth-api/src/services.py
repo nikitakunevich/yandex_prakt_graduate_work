@@ -120,7 +120,7 @@ class TokenService:
         if not user:
             raise InvalidEmail
 
-        user_roles = ','.join(RoleService.get_user_roles(email))
+        user_roles = ','.join([role.role_name for role in RoleService.get_user_roles(email)])
 
         if user_roles:
             access_token = create_access_token(identity=user.email,
@@ -129,7 +129,8 @@ class TokenService:
                                                fresh=True)
         else:
             access_token = create_access_token(identity=user.email,
-                                               additional_claims={'prm': user.is_premium},
+                                               additional_claims={'prm': user.is_premium,
+                                                                  'roles': ''},
                                                fresh=True)
         refresh_token = create_refresh_token(identity=user.email)
 
