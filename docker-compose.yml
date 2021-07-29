@@ -1,0 +1,127 @@
+version: '3.8'
+
+services:
+  admin-panel:
+    restart: unless-stopped
+    build:
+      context: images/admin-panel
+    environment:
+      SECRET_KEY: "LBSmYVU0NdF-RKdm54IWjqW0TaXGK-8vL8weRwu4cxk"
+      STATIC_ROOT: "/static"
+      PG_USER: "postgres"
+      PG_PASS: "postgres"
+      PG_DB: "postgres"
+      PG_HOST: "postgres"
+      LOG_LEVEL: DEBUG
+      ADMIN_USER: 'admin'
+      ADMIN_PASS: 'admin'
+      DJANGO_SETTINGS_MODULE: 'config.settings.prod'
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+      AWS_STORAGE_BUCKET_NAME:
+    ports:
+      - 8000:8000
+    volumes:
+      - static:/static
+
+  postgres-to-es:
+    restart: unless-stopped
+    build:
+      context: images/postres-to-es
+    environment:
+      PG_URL: postgresql://postgres:postgres@postgres/postgres
+      ES_URL: http://elasticsearch:9200
+      REDIS_HOST: redis
+      LOG_LEVEL: DEBUG
+
+  search-api:
+    restart: unless-stopped
+    build:
+      context: images/search-api
+    image: search-api
+    environment:
+      ES_URL: http://elasticsearch:9200
+      REDIS_HOST: redis
+      LOG_LEVEL: DEBUG
+      JWT_PUBLIC_KEY:
+    ports:
+      - 8888:8888
+
+  movies-on-demand-api:
+    restart: unless-stopped
+    build:
+      context: images/movies-on-demand-api
+    environment:
+      LOG_LEVEL: DEBUG
+      CF_KEY_ID:
+      CF_DOMAIN_NAME:
+      CF_PRIVATE_KEY_FILE: private_key.pem
+      URL_PATH_PREFIX: assets/movies
+      URL_EXPIRE_HOURS: 8
+      SEARCH_API_HOST: search-api:8888
+    ports:
+      - 7777:8000
+
+  auth-api:
+    restart: unless-stopped
+    build:
+      context: images/auth-api
+    image: auth-api
+    environment:
+      FLASK_CONFIG: production
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      DATABASE_URL: postgresql://postgres:postgres@postgres/postgres
+      SECRET_KEY: idV9z8SuRFrT04e71IeCgXuttG6kXfB7
+      GOOGLE_CLIENT_SECRET: nr618YYu7FRDKYKAxCIMKwNr
+      GOOGLE_RECAPTCHA_SECRET_KEY: 6Lf7B8MaAAAAAL8dszNdSp82jF2K-W0hOl8JIa-_
+      ROOT_PASSWORD: 123456
+      ROOT_SESSION_HOURS: 2
+      JWT_PRIVATE_KEY:
+      JWT_PUBLIC_KEY:
+    ports:
+      - 5000:5000
+
+  nginx:
+    image: nginx:1.19.2
+    restart: always
+    volumes:
+      - ./images/admin-panel/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./images/admin-panel/nginx_sites:/etc/nginx/conf.d:ro
+      - static:/static
+    ports:
+      - 8080:80
+
+
+  elasticsearch:
+    restart: unless-stopped
+    image: elasticsearch:7.10.1
+    environment:
+      discovery.type: "single-node"
+    ports:
+      - 9200:9200
+    volumes:
+      - elasticdb:/usr/share/elasticsearch/data
+
+  redis:
+    restart: unless-stopped
+    image: redis:6-alpine
+    volumes:
+      - redisdata:/data
+    ports:
+      - 6379:6379
+
+  postgres:
+    restart: unless-stopped
+    image: postgres:13
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres_init:/docker-entrypoint-initdb.d
+
+volumes:
+  elasticdb:
+  redisdata:
+  static:
