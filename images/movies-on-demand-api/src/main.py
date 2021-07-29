@@ -4,7 +4,6 @@ import logging
 import jwt
 from fastapi import FastAPI, HTTPException, Request
 import sentry_sdk
-
 from config import settings
 from exceptions import MissingMovieFileError, MissingSubscriptionError
 from models import MovieIDRequest
@@ -57,17 +56,3 @@ def create_private_link(
 
     except jwt.exceptions.ExpiredSignatureError as exc:
         raise HTTPException(status_code=400, detail="Expired token") from exc
-
-    except MissingSubscriptionError as exc:
-        raise HTTPException(status_code=403, detail="Missing subscription") from exc
-
-    except MissingMovieFileError as exc:
-        raise HTTPException(
-            status_code=404, detail="No existing video file for movie"
-        ) from exc
-
-    except HTTPException as exc:
-        raise HTTPException(status_code=exc.status_code, detail=exc.detail) from exc
-
-    except Exception as exc:  # pylint: disable=W0703
-        raise HTTPException(status_code=500, detail="Internal error") from exc
