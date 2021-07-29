@@ -19,6 +19,9 @@ isort = "*"
 flake8 = "*"
 pylint = "*"
 mypy = "*"
+pytest = "*"
+requests = "*"
+pytest-mock = "*"
 
 [requires]
 python_version = "3.9"
