@@ -9,6 +9,7 @@ from datetime import datetime, timezone
 from functools import wraps
 from typing import List, Optional, Dict, Any, Union, Callable, Sequence
 
+import sentry_sdk
 import elasticsearch
 import psycopg2
 from elasticsearch import Elasticsearch, helpers
@@ -21,11 +22,16 @@ from redis import Redis
 import backoff
 
 from postgres_to_es.state import State, RedisState
+from postgres_to_es.utils import datetime_to_iso_string
 
 logger.remove()
 logger.add(sys.stderr, level=os.environ.get("LOG_LEVEL", "INFO"))
 
-from postgres_to_es.utils import datetime_to_iso_string
+sentry_sdk.init(
+    "https://6f0e6c17ccec41d6a58229df1c34b807@o828822.ingest.sentry.io/5883947",
+    server_name="postgres-to-es",
+    traces_sample_rate=1.0
+)
 
 
 def coroutine(func):

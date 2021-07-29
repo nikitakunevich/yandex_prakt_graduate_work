@@ -1,5 +1,7 @@
 import logging.config
 
+import sentry_sdk
+
 import defaults
 import jwt
 import uvicorn as uvicorn
@@ -11,6 +13,12 @@ from fastapi import FastAPI
 from fastapi.responses import ORJSONResponse
 from starlette.middleware.authentication import AuthenticationMiddleware
 from auth import JWTAuthBackend
+
+sentry_sdk.init(
+    "https://6f0e6c17ccec41d6a58229df1c34b807@o828822.ingest.sentry.io/5883947",
+    server_name="search-api",
+    traces_sample_rate=1.0
+)
 
 app = FastAPI(
     title="Films API",

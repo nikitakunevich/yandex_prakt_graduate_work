@@ -11,6 +11,7 @@ uvicorn = "*"
 cryptography = "*"
 pyjwt = "*"
 httpx = "*"
+sentry-sdk = "==1.3.1"
 
 [dev-packages]
 black = "==21.6b0"

@@ -3,6 +3,7 @@ import logging
 
 import jwt
 from fastapi import FastAPI, HTTPException, Request
+import sentry_sdk
 
 from config import settings
 from exceptions import MissingMovieFileError, MissingSubscriptionError
@@ -10,6 +11,11 @@ from models import MovieIDRequest
 from url_signer import get_signed_url
 from utils import get_movie_by_id, is_premium_user
 
+sentry_sdk.init(
+    "https://6f0e6c17ccec41d6a58229df1c34b807@o828822.ingest.sentry.io/5883947",
+    server_name="movies-on-demand-api",
+    traces_sample_rate=1.0
+)
 app = FastAPI()
 
 logging.basicConfig(level=settings.log_level)
