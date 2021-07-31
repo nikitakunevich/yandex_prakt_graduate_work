@@ -35,10 +35,8 @@ class DeviceService:
     @staticmethod
     def is_device_registered(email, device_id):
         user = UserService.get_user_by_email(email)
-        registered_devices = user.devices
-        for device in registered_devices:
-            if device_id == str(device.id):
-                return True
+        if user.devices.filter_by(id=device_id).exists():
+            return True
         return False
 
     @staticmethod
@@ -52,11 +50,9 @@ class DeviceService:
         device_id = device_data['device_id']
 
         user = UserService.get_user_by_email(email)
-        user_devices = user.devices
 
-        for user_device in user_devices:
-            if str(user_device.id) == device_id:
-                raise DeviceAlreadyExists
+        if user.devices.filter_by(id=device_id).exists():
+            raise DeviceAlreadyExists
 
         device = models.Device(id=device_id, user_id=user.id)
         db.session.add(device)
