@@ -24,16 +24,10 @@ class TokenService:
 
         user_roles = ','.join([role.role_name for role in RoleService.get_user_roles(email)])
 
-        if user_roles:
-            access_token = create_access_token(identity=user.email,
-                                               additional_claims={'prm': user.is_premium,
-                                                                  'roles': user_roles},
-                                               fresh=True)
-        else:
-            access_token = create_access_token(identity=user.email,
-                                               additional_claims={'prm': user.is_premium,
-                                                                  'roles': ''},
-                                               fresh=True)
+        access_token = create_access_token(identity=user.email,
+                                           additional_claims={'prm': user.is_premium,
+                                                              'roles': user_roles or ''},
+                                           fresh=True)
         refresh_token = create_refresh_token(identity=user.email)
 
         redis_db.setex(device_id, 60 * 60 * 24 * 30, refresh_token)
