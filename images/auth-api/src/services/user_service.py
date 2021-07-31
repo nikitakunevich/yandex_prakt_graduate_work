@@ -9,8 +9,6 @@ from exceptions import UnknownUser
 
 
 class UserService:
-    def __init__(self):
-        pass
 
     @staticmethod
     def get_google_token_claims(id_token):
@@ -53,9 +51,6 @@ class UserService:
                 raise Exception('insufficient privileges')
         db.session.add(user)
         db.session.commit()
-
-    def delete_user(self):
-        pass
 
     @classmethod
     def check_user_password(cls, email, plaintext_password):

@@ -9,8 +9,6 @@ from . import UserService
 
 
 class DeviceService:
-    def __init__(self):
-        pass
 
     @staticmethod
     def get_device_by_id(device_id):
