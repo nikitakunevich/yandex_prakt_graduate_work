@@ -1,24 +1,19 @@
+import json
 import random
 import string
-import json
-
 from urllib.parse import urlencode
 from urllib.request import urlopen
 
 from flask import request
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
+from flask_jwt_extended import get_jwt_identity, jwt_required
 
 import schemas
-from . import router
-
-from services import UserService
-from services import DeviceService
-from services import TokenService
-from services import HistoryService
-from services import OAuthService
-
 from main import app
+from services import (DeviceService, HistoryService,
+                      TokenService, UserService)
+from services.oauth import OAuthService
+
+from . import router
 
 
 @router.route('/social_auth/auth/<string:backend>')

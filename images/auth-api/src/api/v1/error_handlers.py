@@ -1,15 +1,10 @@
 from authlib.jose.errors import ExpiredTokenError
-from marshmallow.exceptions import ValidationError
 from flask import jsonify, url_for
+from marshmallow.exceptions import ValidationError
 from werkzeug.exceptions import BadRequest
 
-from services import DeviceAlreadyExists
-from services import RoleAlreadyExists
-from services import InvalidEmail
-from services import InvalidRefreshToken
-from services import UnknownDevice
-from services import UnknownUser
-
+from exceptions import (DeviceAlreadyExists, InvalidEmail, InvalidRefreshToken,
+                      RoleAlreadyExists, UnknownDevice, UnknownUser)
 
 from . import router
 

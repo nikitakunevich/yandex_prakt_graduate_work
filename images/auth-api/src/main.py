@@ -1,7 +1,7 @@
 import os
 
-from flask import jsonify
 import sentry_sdk
+from flask import jsonify
 
 from app import create_app
 

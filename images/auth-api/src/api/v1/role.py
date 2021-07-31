@@ -1,9 +1,9 @@
-from flask_jwt_extended import get_jwt_identity
-from flask_jwt_extended import jwt_required
-from flask_jwt_extended import get_jwt
+from flask import request
+from flask_jwt_extended import get_jwt, get_jwt_identity, jwt_required
+
 import schemas
-from services import UserService, HistoryService, RoleService
-from flask import request, jsonify
+from services import  RoleService
+
 from . import router
 
 
