@@ -89,6 +89,11 @@ resource "kubernetes_deployment" "admin-panel" {
             value = "True"
           }
 
+          env {
+            name  = "SENTRY_URL"
+            value = "https://6f0e6c17ccec41d6a58229df1c34b807@o828822.ingest.sentry.io/5883947"
+          }
+
           volume_mount {
             mount_path = "/static"
             name = "static"
