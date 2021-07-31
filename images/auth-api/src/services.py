@@ -13,40 +13,14 @@ from werkzeug.security import generate_password_hash, check_password_hash
 import models
 from cache import redis_db
 from db import db
+from exceptions import DeviceAlreadyExists, RoleAlreadyExists, InvalidEmail, InvalidRefreshToken
+from exceptions import UnknownDevice, UnknownRole, UnknownUser
 
 from authlib.integrations.flask_client import OAuth
 
 from main import app
 
 oauth = OAuth(app)
-
-
-class InvalidEmail(Exception):
-    pass
-
-
-class UnknownUser(Exception):
-    pass
-
-
-class UnknownRole(Exception):
-    pass
-
-
-class InvalidRefreshToken(Exception):
-    pass
-
-
-class UnknownDevice(Exception):
-    pass
-
-
-class DeviceAlreadyExists(Exception):
-    pass
-
-
-class RoleAlreadyExists(Exception):
-    pass
 
 
 class UserService:
