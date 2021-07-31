@@ -18,12 +18,13 @@ def is_premium_user(token: str) -> bool:
     return bool(payload["prm"])
 
 
-def get_movie_by_id(movie_id: str, auth_token: Optional[str] = None) -> Movie:
+async def get_movie_by_id(movie_id: str, auth_token: Optional[str] = None) -> Movie:
     """Возвращает информацию о фильме по id."""
 
     url = f"http://{settings.search_api_host}/v1/private/film/{movie_id}"
     headers = {"Authorization": f"Bearer {auth_token}"} if auth_token else None
-    resp = httpx.get(url, headers=headers)
+    async with httpx.AsyncClient() as client:
+        resp = await client.get(url, headers=headers)
 
     if resp.is_error:
         raise HTTPException(

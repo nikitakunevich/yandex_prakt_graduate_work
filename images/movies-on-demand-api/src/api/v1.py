@@ -15,13 +15,13 @@ router = APIRouter()
 
 
 @router.get("/health-check")
-def health_check() -> dict[str, str]:
+async def health_check() -> dict[str, str]:
     """Проверка состояния сервиса."""
     return {"status": "healthy"}
 
 
 @router.post("/movie_private_link", status_code=200)
-def create_private_link(
+async def create_private_link(
     movie_id_request: MovieIDRequest, request: Request
 ) -> dict[str, str]:
     """Создает ссылку для доступа к фильму."""
@@ -31,7 +31,7 @@ def create_private_link(
         premium_user = is_premium_user(token)
 
         logger.debug("Getting movie metadata")
-        movie = get_movie_by_id(str(movie_id_request.id), auth_token=token)
+        movie = await get_movie_by_id(str(movie_id_request.id), auth_token=token)
 
         if not movie.filename:
             raise MissingMovieFileError()
