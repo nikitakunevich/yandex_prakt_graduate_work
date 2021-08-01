@@ -29,10 +29,6 @@ class Config:
     ROOT_SESSION_HOURS = int(os.environ.get('ROOT_SESSION_HOURS')) if \
         os.environ.get('ROOT_SESSION_HOURS') else 1
 
-    @staticmethod
-    def init_app(app):
-        pass
-
 
 class DevelopmentConfig(Config):
     DEBUG = True
