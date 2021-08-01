@@ -11,7 +11,7 @@ from config import settings
 sentry_sdk.init(
     "https://6f0e6c17ccec41d6a58229df1c34b807@o828822.ingest.sentry.io/5883947",
     server_name="movies-on-demand-api",
-    traces_sample_rate=1.0
+    traces_sample_rate=1.0,
 )
 
 logging.basicConfig(level=settings.log_level)
