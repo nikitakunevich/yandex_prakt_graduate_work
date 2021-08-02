@@ -1,4 +1,4 @@
-from google_provider import GoogleProvider
+from .google_provider import GoogleProvider
 
 
 class OAuthService:
