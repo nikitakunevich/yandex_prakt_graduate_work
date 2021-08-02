@@ -12,7 +12,7 @@ export AWS_SECRET_ACCESS_KEY=rf2ro0M1N1jK2fERRQKahFMrt6SoatDYS0Q2WGug
 ```bash
 ./DO_ALL.SH
 ```
-4. Grab a cup of coffee and relax for 40-50 minutes :simple_smile:
+4. Grab a cup of coffee and relax for 40-50 minutes :grin:
 
 
 # Local development
