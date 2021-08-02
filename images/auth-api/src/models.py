@@ -2,7 +2,7 @@ import datetime
 import uuid
 
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import relationship
+from sqlalchemy.orm import backref, relationship
 from sqlalchemy.schema import UniqueConstraint
 
 from db import db
@@ -76,7 +76,7 @@ class User(db.Model):
     is_active = db.Column(db.Boolean, default=True, nullable=False)
     created = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated = db.Column(db.DateTime, default=datetime.datetime.utcnow)
-    devices = relationship("Device", backref="user")
+    devices = relationship("Device", backref=backref("user", uselist=False))
     roles = relationship(
         "Role",
         secondary="user_role_association",

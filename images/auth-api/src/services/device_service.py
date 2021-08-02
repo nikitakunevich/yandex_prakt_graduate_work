@@ -51,7 +51,7 @@ class DeviceService:
 
         user = UserService.get_user_by_email(email)
 
-        if user.devices.filter_by(id=device_id).exists():
+        if [device for device in user.devices if device.id == device_id]:
             raise DeviceAlreadyExists
 
         device = models.Device(id=device_id, user_id=user.id)
