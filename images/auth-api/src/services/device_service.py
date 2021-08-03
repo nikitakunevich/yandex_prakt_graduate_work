@@ -35,8 +35,11 @@ class DeviceService:
     @staticmethod
     def is_device_registered(email, device_id):
         user = UserService.get_user_by_email(email)
-        if user.devices.filter_by(id=device_id).exists():
+
+        device_exists = db.session.query(models.User, models.Device).filter(models.Device.id == device_id).one_or_none()
+        if device_exists:
             return True
+
         return False
 
     @staticmethod
@@ -51,7 +54,8 @@ class DeviceService:
 
         user = UserService.get_user_by_email(email)
 
-        if [device for device in user.devices if device.id == device_id]:
+        device_is_already_registered = db.session.query(models.User, models.Device).filter(models.Device.id == device_id).one_or_none()
+        if device_is_already_registered:
             raise DeviceAlreadyExists
 
         device = models.Device(id=device_id, user_id=user.id)
